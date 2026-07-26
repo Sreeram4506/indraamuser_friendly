@@ -622,6 +622,14 @@ a:hover { color: var(--color-accent-200); }
   color: color-mix(in srgb, var(--color-text) 76%, transparent);
 }
 
+@media (max-width: 480px) {
+  /* The section number sits close to its floor (clamp min) on narrow
+     phones while the eyebrow text stays tiny — give the pair a bit more
+     air instead of letting them crowd each other. */
+  .sec__num { font-size: 28px; margin-right: 10px; }
+  .sec__title { max-width: none; }
+}
+
 /* --------------------------------------------------------------------------
    9. Chips (services, industries, journeys)
    -------------------------------------------------------------------------- */
@@ -701,12 +709,12 @@ a:hover { color: var(--color-accent-200); }
 .panel__grid--wide { grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
 
 .panel__stage {
-  padding: clamp(20px, 3vw, 36px);
+  padding: clamp(24px, 6vw, 36px);
   border-bottom: 1px solid var(--color-divider);
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: clamp(240px, 44vw, 300px);
+  min-height: clamp(260px, 44vw, 300px);
   background: radial-gradient(120% 120% at 50% 20%, color-mix(in srgb, var(--color-accent-900) 55%, transparent) 0%, transparent 70%);
 }
 .panel__body { padding: clamp(20px, 3vw, 36px); }
@@ -804,7 +812,7 @@ a:hover { color: var(--color-accent-200); }
 .viz-voice.is-on { display: flex; }
 
 /* 01 — agent hub */
-.viz-agent { position: relative; width: 100%; max-width: 340px; height: clamp(200px, 42vw, 240px); }
+.viz-agent { position: relative; width: 100%; max-width: 340px; height: clamp(230px, 46vw, 240px); }
 .viz-agent__wires { position: absolute; inset: 0; }
 .viz-agent__wires g { animation: dashFlow 1s linear infinite; }
 .viz-agent__node {
@@ -963,6 +971,15 @@ a:hover { color: var(--color-accent-200); }
 .viz-uiux__legend span:first-child { width: 9px; height: 9px; flex: none; }
 .viz-uiux__legend .is-wire { border: 1.5px dashed var(--color-divider); }
 .viz-uiux__legend .is-live { background: var(--color-accent); animation: handlePulse 1.8s ease-in-out infinite; }
+
+@media (max-width: 420px) {
+  /* Phone mockup + legend are both flex:none, so on the narrowest phones
+     they get squeezed shoulder-to-shoulder instead of having room to
+     breathe. Stack them instead — each gets full width and stays legible. */
+  .viz-uiux { flex-direction: column; gap: 20px; }
+  .viz-uiux__phone { width: clamp(150px, 55vw, 184px); }
+  .viz-uiux__legend { flex-direction: row; gap: 20px; }
+}
 .viz-uiux__legend em {
   font-style: normal; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
   color: color-mix(in srgb, var(--color-bg) 55%, transparent);
