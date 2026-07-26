@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Indraam — Admin</title>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<link rel="icon" href="assets/logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="css/design-system.css">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin">
+
+<!-- ===================== Sign in ===================== -->
+<div class="login" id="loginView" hidden>
+  <form class="blueprint login__card" id="loginForm">
+    <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    <div class="login__brand">Indraam</div>
+    <div class="login__eyebrow">Order desk · admin</div>
+    <label class="login__field">
+      <span class="contact__label">Password</span>
+      <input class="input" id="loginPassword" type="password" autocomplete="current-password" required>
+    </label>
+    <p class="login__err u-hidden" id="loginErr" role="alert"></p>
+    <button class="btn btn-primary login__submit" type="submit" id="loginSubmit">Sign in</button>
+  </form>
+</div>
+
+<!-- ===================== Dashboard ===================== -->
+<div id="appView" hidden>
+
+  <header class="adminbar">
+    <span class="nav-brand">Indraam</span>
+    <span class="adminbar__tag">Admin</span>
+    <div class="adminbar__spacer"></div>
+    <a class="adminbar__link" href="index.html">View site</a>
+    <button type="button" class="btn btn-secondary adminbar__out" id="logoutBtn">Sign out</button>
+  </header>
+
+  <main class="adminmain">
+
+    <section class="statgrid" id="statGrid" aria-label="Overview">
+      <div class="blueprint statcard">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <div class="statcard__n" id="sQuestions">—</div>
+        <div class="statcard__label">Questions asked</div>
+        <div class="statcard__sub" id="sChats">— conversations</div>
+      </div>
+      <div class="blueprint statcard">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <div class="statcard__n" id="sGaps">—</div>
+        <div class="statcard__label">Gap-finder runs</div>
+        <div class="statcard__sub" id="sGaps7">— in the last 7 days</div>
+      </div>
+      <div class="blueprint statcard">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <div class="statcard__n" id="sContacts">—</div>
+        <div class="statcard__label">Form submissions</div>
+        <div class="statcard__sub" id="sContacts24">— in the last 24 hours</div>
+      </div>
+      <div class="blueprint statcard statcard--alert">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <div class="statcard__n" id="sNew">—</div>
+        <div class="statcard__label">Unread leads</div>
+        <div class="statcard__sub">waiting on a reply</div>
+      </div>
+    </section>
+
+    <nav class="tabs" id="tabs" role="tablist" aria-label="Records">
+      <button type="button" class="chip" role="tab" aria-pressed="true" aria-selected="true" data-tab="contacts">Leads</button>
+      <button type="button" class="chip" role="tab" aria-pressed="false" aria-selected="false" data-tab="chats">Conversations</button>
+      <button type="button" class="chip" role="tab" aria-pressed="false" aria-selected="false" data-tab="gaps">Gap runs</button>
+    </nav>
+
+    <div class="toolbar">
+      <input class="input toolbar__search" id="search" type="search" placeholder="Search…" aria-label="Search records">
+      <select class="input toolbar__status" id="statusFilter" aria-label="Filter by status">
+        <option value="">All statuses</option>
+        <option value="new">New</option>
+        <option value="read">Read</option>
+        <option value="replied">Replied</option>
+        <option value="archived">Archived</option>
+      </select>
+      <div class="toolbar__spacer"></div>
+      <button type="button" class="btn btn-secondary" id="refreshBtn">Refresh</button>
+      <a class="btn btn-secondary" id="exportBtn" href="#" download>Export CSV</a>
+    </div>
+
+    <p class="notice u-hidden" id="notice" role="status"></p>
+
+    <div class="records" id="records" aria-live="polite"></div>
+
+    <div class="pager u-hidden" id="pager">
+      <button type="button" class="btn btn-secondary" id="prevBtn">← Newer</button>
+      <span class="pager__label" id="pagerLabel"></span>
+      <button type="button" class="btn btn-secondary" id="nextBtn">Older →</button>
+    </div>
+
+  </main>
+</div>
+
+<script src="js/admin.js"></script>
+</body>
+</html>

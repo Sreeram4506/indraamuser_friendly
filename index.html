@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Indraam — We engineer systems that do the work</title>
+<meta name="description" content="Indraam is a US-based creative and engineering studio. We design and ship agentic AI systems, automation workflows, web and mobile applications and premium digital products.">
+<meta name="theme-color" content="#2b2b2d">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Indraam — We engineer systems that do the work">
+<meta property="og:description" content="Agentic AI systems, automation workflows, web &amp; mobile apps, UI/UX, voice agents and data platforms — specified, measured and handed over clean.">
+<meta property="og:image" content="assets/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="css/design-system.css">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+
+<!-- ========================= Boot curtain ========================= -->
+<div class="boot" id="boot" aria-hidden="true">
+  <div class="boot__word">Indraam</div>
+  <div class="boot__track"><div class="boot__bar"></div></div>
+  <div class="boot__note">Initializing systems</div>
+</div>
+
+<!-- ========================= Nav ========================= -->
+<nav class="nav" id="nav" aria-label="Primary">
+  <a class="nav-brand" href="#top">Indraam</a>
+
+  <div class="nav__links">
+    <a class="nav__link" href="#services">Services</a>
+    <a class="nav__link" href="#industries">Industries</a>
+    <a class="nav__link" href="#process">Process</a>
+    <a class="nav__link" href="#gaps">AI gaps</a>
+    <a class="nav__link" href="#faq">FAQ</a>
+    <a class="btn btn-primary nav__cta" href="#contact">Book a call</a>
+  </div>
+
+  <button type="button" class="nav__toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navDrawer">
+    <span></span><span></span><span></span>
+  </button>
+
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+
+  <div class="nav__drawer u-hidden" id="navDrawer">
+    <a href="#services">Services</a>
+    <a href="#industries">Industries</a>
+    <a href="#process">Process</a>
+    <a href="#gaps">AI gaps</a>
+    <a href="#faq">FAQ</a>
+    <a class="btn btn-primary" href="#contact">Book a call</a>
+  </div>
+</nav>
+
+<main id="top">
+
+<!-- ========================= Hero ========================= -->
+<section class="hero" id="hero">
+  <div class="hero__mesh" aria-hidden="true"></div>
+  <div class="hero__arc" id="heroArc" aria-hidden="true"></div>
+
+  <div class="hero__cross" id="heroCross" aria-hidden="true">
+    <div class="hero__cross-v" id="crossV"></div>
+    <div class="hero__cross-h" id="crossH"></div>
+    <div class="hero__cross-dot" id="crossDot"></div>
+    <div class="hero__cross-label" id="crossLabel">X 000 · Y 000</div>
+  </div>
+
+  <div class="hero__inner">
+    <div>
+      <div class="hero__badge">
+        <span class="pip"></span>
+        <span>Full-spectrum AI engineering</span>
+      </div>
+
+      <h1 class="hero__title">
+        <span>We engineer systems</span>
+        <span>that do the work.</span>
+      </h1>
+
+      <p class="hero__lead">Indraam is a US-based creative and engineering studio. We design and ship agentic AI systems, automation workflows, web and mobile applications and premium digital products — specified, measured and handed over clean.</p>
+
+      <div class="hero__ctas">
+        <a class="btn btn-primary" href="#contact">Book a call</a>
+        <a class="btn btn-ghost" href="#services">See the services</a>
+      </div>
+
+      <div class="hero__stats" id="heroStats">
+        <div class="stat">
+          <div class="stat__n" data-stat-end="6" data-stat-suffix="">6</div>
+          <div class="stat__label">Capabilities, one team</div>
+          <div class="stat__sub">AI · automation · web · data</div>
+        </div>
+        <div class="stat">
+          <div class="stat__n" data-stat-end="2" data-stat-suffix=" wks">2 wks</div>
+          <div class="stat__label">To a working demo</div>
+          <div class="stat__sub">then shipped weekly</div>
+        </div>
+        <div class="stat">
+          <div class="stat__n" data-stat-end="100" data-stat-suffix="%">100%</div>
+          <div class="stat__label">Handed over to you</div>
+          <div class="stat__sub">code, docs &amp; infra</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Agent chat panel -->
+    <div class="blueprint elev-lg edge-bleed chatcard">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+
+      <header class="chatcard__head">
+        <span class="chatcard__title">Indraam agent — live</span>
+        <span class="chatcard__id">AGT-01</span>
+        <span class="chatcard__state"><span class="pip"></span>Online</span>
+      </header>
+
+      <div class="chatcard__log" id="chatLog" role="log" aria-live="polite" aria-label="Conversation with the Indraam agent"></div>
+
+      <form class="chatcard__form" id="chatForm">
+        <span class="chatcard__ghost" id="chatGhost" aria-hidden="true"></span>
+        <input class="chatcard__input" id="chatInput" type="text" autocomplete="off" placeholder="" aria-label="Ask the Indraam agent">
+        <button type="submit" class="chatcard__send" aria-label="Send">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-300)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 3 3 9-3 9 19-9Z"></path><path d="M6 12h16"></path></svg>
+        </button>
+      </form>
+
+      <button type="button" class="chatcard__demo" id="chatTakeover">
+        <span class="pip"></span>Live demo — tap to ask your own question &rarr;
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= Marquee ========================= -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span class="marquee__item">Agentic AI systems &nbsp;+&nbsp; Automation workflows &nbsp;+&nbsp; Web &amp; mobile apps &nbsp;+&nbsp; UI/UX &nbsp;+&nbsp; Voice agents &nbsp;+&nbsp; Data &amp; analytics &nbsp;+&nbsp;</span>
+    <span class="marquee__item">Agentic AI systems &nbsp;+&nbsp; Automation workflows &nbsp;+&nbsp; Web &amp; mobile apps &nbsp;+&nbsp; UI/UX &nbsp;+&nbsp; Voice agents &nbsp;+&nbsp; Data &amp; analytics &nbsp;+&nbsp;</span>
+  </div>
+</div>
+
+<!-- ========================= 01 Services ========================= -->
+<section class="sec" id="services">
+  <div data-reveal>
+    <span class="sec__kicker"><span class="sec__num">01</span><span class="sec__eyebrow">What we build</span></span>
+    <hr class="sec__rule">
+    <h2 class="sec__title">Tap a capability — watch what we'd build.</h2>
+    <p class="sec__lead">Six capabilities, one delivery team. Select one and the panel below animates exactly how the system works — the agents and interfaces on top, the pipelines and data underneath.</p>
+  </div>
+
+  <div class="chips chips--scroll" id="serviceChips" data-reveal data-reveal-delay="1" role="tablist" aria-label="Capabilities">
+    <button type="button" class="chip" role="tab" aria-pressed="true" aria-selected="true" data-index="0"><span class="chip__no">01</span>Agentic AI</button>
+    <button type="button" class="chip" role="tab" aria-pressed="false" aria-selected="false" data-index="1"><span class="chip__no">02</span>Automation</button>
+    <button type="button" class="chip" role="tab" aria-pressed="false" aria-selected="false" data-index="2"><span class="chip__no">03</span>Web &amp; mobile</button>
+    <button type="button" class="chip" role="tab" aria-pressed="false" aria-selected="false" data-index="3"><span class="chip__no">04</span>Product &amp; UI/UX</button>
+    <button type="button" class="chip" role="tab" aria-pressed="false" aria-selected="false" data-index="4"><span class="chip__no">05</span>Voice &amp; chat</button>
+    <button type="button" class="chip" role="tab" aria-pressed="false" aria-selected="false" data-index="5"><span class="chip__no">06</span>Data &amp; analytics</button>
+  </div>
+
+  <div class="blueprint edge-bleed panel" id="servicePanel" data-reveal data-reveal-delay="2">
+    <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+
+    <div class="panel__head">
+      <span class="panel__step" id="serviceStep">01 / 06</span>
+      <div class="panel__segs" id="serviceSegs" aria-hidden="true">
+        <span class="panel__seg is-on"></span><span class="panel__seg"></span><span class="panel__seg"></span>
+        <span class="panel__seg"></span><span class="panel__seg"></span><span class="panel__seg"></span>
+      </div>
+    </div>
+
+    <div class="panel__grid">
+      <div class="panel__stage" id="serviceStage">
+
+        <!-- 01 · Agentic AI -->
+        <div class="viz viz-agent is-on" data-viz="0">
+          <svg class="viz-agent__wires" viewBox="0 0 320 240" preserveAspectRatio="none" width="100%" height="100%" aria-hidden="true">
+            <g stroke="var(--color-accent)" stroke-width="1" fill="none" opacity="0.55" stroke-dasharray="4 5">
+              <line x1="160" y1="120" x2="58" y2="44"></line>
+              <line x1="160" y1="120" x2="262" y2="44"></line>
+              <line x1="160" y1="120" x2="58" y2="196"></line>
+              <line x1="160" y1="120" x2="262" y2="196"></line>
+            </g>
+          </svg>
+          <span class="viz-agent__node viz-agent__node--tl">CRM</span>
+          <span class="viz-agent__node viz-agent__node--tr">APIs</span>
+          <span class="viz-agent__node viz-agent__node--bl">Inbox</span>
+          <span class="viz-agent__node viz-agent__node--br">Database</span>
+          <div class="viz-agent__core">Agent</div>
+        </div>
+
+        <!-- 02 · Automation -->
+        <div class="viz viz-flow" data-viz="1">
+          <svg viewBox="0 0 360 210" width="100%" height="auto" aria-hidden="true" font-family="Barlow, sans-serif">
+            <g fill="none" stroke="var(--color-accent)" stroke-width="1.5">
+              <path d="M102,105 C132,105 122,50 152,50"></path>
+              <path d="M102,105 C132,105 122,160 152,160"></path>
+              <path d="M248,50 C266,50 254,105 272,105"></path>
+              <path d="M248,160 C266,160 254,105 272,105"></path>
+            </g>
+            <g class="viz-flow__dash" fill="none" stroke="color-mix(in srgb, var(--color-bg) 70%, transparent)" stroke-width="1.5" stroke-dasharray="1 7" stroke-linecap="round" opacity="0.7">
+              <path d="M102,105 C132,105 122,50 152,50"></path>
+              <path d="M102,105 C132,105 122,160 152,160"></path>
+              <path d="M248,50 C266,50 254,105 272,105"></path>
+              <path d="M248,160 C266,160 254,105 272,105"></path>
+            </g>
+            <circle r="4.5" fill="var(--color-accent)"><animateMotion dur="2.6s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" path="M102,105 C132,105 122,50 152,50"></animateMotion></circle>
+            <circle r="4.5" fill="var(--color-accent)"><animateMotion dur="2.6s" begin="0.5s" repeatCount="indefinite" path="M102,105 C132,105 122,160 152,160"></animateMotion></circle>
+            <circle r="4.5" fill="var(--color-accent)"><animateMotion dur="2.6s" begin="1.3s" repeatCount="indefinite" path="M248,50 C266,50 254,105 272,105"></animateMotion></circle>
+            <circle r="4.5" fill="var(--color-accent)"><animateMotion dur="2.6s" begin="1.8s" repeatCount="indefinite" path="M248,160 C266,160 254,105 272,105"></animateMotion></circle>
+            <g stroke="var(--color-accent)" stroke-width="1.5" fill="var(--color-neutral-900)">
+              <circle cx="102" cy="105" r="3.5"></circle><circle cx="152" cy="50" r="3.5"></circle><circle cx="152" cy="160" r="3.5"></circle>
+              <circle cx="248" cy="50" r="3.5"></circle><circle cx="248" cy="160" r="3.5"></circle><circle cx="272" cy="105" r="3.5"></circle>
+            </g>
+            <g>
+              <rect class="viz-flow__trigger" x="10" y="85" width="92" height="40" rx="9" fill="var(--color-accent-900)" stroke="var(--color-accent)" stroke-width="1.5"></rect>
+              <rect x="17" y="92" width="26" height="26" rx="6" fill="var(--color-accent)"></rect>
+              <path d="M27 100 v10 M27 100 l-4 4 M27 100 l4 4" stroke="var(--color-neutral-900)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" transform="rotate(90 30 105)"></path>
+              <text x="50" y="102" fill="var(--color-bg)" font-size="10.5" font-weight="600">Trigger</text>
+              <text x="50" y="115" fill="color-mix(in srgb, var(--color-bg) 55%, transparent)" font-size="8">new invoice</text>
+            </g>
+            <g>
+              <rect x="152" y="30" width="96" height="40" rx="9" fill="var(--color-neutral-900)" stroke="var(--color-divider)" stroke-width="1.5"></rect>
+              <rect x="159" y="37" width="26" height="26" rx="6" fill="color-mix(in srgb, var(--color-accent) 55%, transparent)"></rect>
+              <text x="192" y="47" fill="var(--color-bg)" font-size="10.5" font-weight="600">Extract</text>
+              <text x="192" y="60" fill="color-mix(in srgb, var(--color-bg) 55%, transparent)" font-size="8">AI parse</text>
+            </g>
+            <g>
+              <rect x="152" y="140" width="96" height="40" rx="9" fill="var(--color-neutral-900)" stroke="var(--color-divider)" stroke-width="1.5"></rect>
+              <rect x="159" y="147" width="26" height="26" rx="6" fill="color-mix(in srgb, var(--color-accent) 55%, transparent)"></rect>
+              <text x="192" y="157" fill="var(--color-bg)" font-size="10.5" font-weight="600">Route</text>
+              <text x="192" y="170" fill="color-mix(in srgb, var(--color-bg) 55%, transparent)" font-size="8">if / else</text>
+            </g>
+            <g>
+              <rect x="272" y="85" width="82" height="40" rx="9" fill="var(--color-neutral-900)" stroke="var(--color-accent)" stroke-width="1.5"></rect>
+              <rect x="279" y="92" width="26" height="26" rx="6" fill="var(--color-accent)"></rect>
+              <path d="M292 100 l4 4 l6 -8" stroke="var(--color-neutral-900)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
+              <text x="312" y="102" fill="var(--color-bg)" font-size="10.5" font-weight="600">Log</text>
+              <text x="312" y="115" fill="color-mix(in srgb, var(--color-bg) 55%, transparent)" font-size="8">+ notify</text>
+            </g>
+          </svg>
+          <div class="viz-flow__note">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+            No human in the loop
+          </div>
+        </div>
+
+        <!-- 03 · Web & mobile -->
+        <div class="viz blueprint viz-build" data-viz="2">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div class="viz-build__bar" aria-hidden="true">
+            <i></i><i></i><i></i><u></u>
+          </div>
+          <div class="viz-build__body" aria-hidden="true">
+            <div class="viz-build__hd"></div>
+            <div class="viz-build__cols"><div></div><div></div></div>
+            <div class="viz-build__cta"></div>
+          </div>
+        </div>
+
+        <!-- 04 · Product & UI/UX -->
+        <div class="viz viz-uiux" data-viz="3">
+          <div class="viz-uiux__phone">
+            <div class="viz-uiux__notch"></div>
+            <div class="viz-uiux__screen">
+              <div class="viz-uiux__layer viz-uiux__layer--wire" aria-hidden="true">
+                <div class="viz-uiux__row">
+                  <span class="viz-uiux__avatar"></span>
+                  <span class="viz-uiux__lines"><i></i><i></i></span>
+                </div>
+                <div class="viz-uiux__box"></div>
+                <div class="viz-uiux__pair"><div></div><div></div></div>
+                <div class="viz-uiux__cta"></div>
+              </div>
+              <div class="viz-uiux__layer viz-uiux__layer--hifi" aria-hidden="true">
+                <div class="viz-uiux__row">
+                  <span class="viz-uiux__avatar"></span>
+                  <span class="viz-uiux__lines"><i></i><i></i></span>
+                </div>
+                <div class="viz-uiux__chart"><span></span><span></span><span></span><span></span></div>
+                <div class="viz-uiux__kpis">
+                  <div class="viz-uiux__kpi"><b>2.4k</b><i></i></div>
+                  <div class="viz-uiux__kpi"><b>98%</b><i></i></div>
+                </div>
+                <div class="viz-uiux__go">Continue</div>
+              </div>
+            </div>
+            <svg class="viz-uiux__cursor" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2l14 8-6 1.5L9 18z" fill="var(--color-bg)" stroke="var(--color-neutral-900)" stroke-width="1.2" stroke-linejoin="round"></path></svg>
+          </div>
+          <div class="viz-uiux__legend">
+            <div><span class="is-wire"></span><em>Wireframe</em></div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-300)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg>
+            <div><span class="is-live"></span><em>Shipped</em></div>
+          </div>
+        </div>
+
+        <!-- 05 · Voice & chat -->
+        <div class="viz viz-voice" data-viz="4">
+          <div class="viz-voice__mic">
+            <span class="viz-voice__ring" aria-hidden="true"></span>
+            <span class="viz-voice__ring viz-voice__ring--b" aria-hidden="true"></span>
+            <div class="viz-voice__badge">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-200)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg>
+            </div>
+          </div>
+          <div class="viz-voice__wave" aria-hidden="true">
+            <span style="animation-delay:0s"></span><span style="animation-delay:.15s"></span><span style="animation-delay:.3s"></span>
+            <span style="animation-delay:.1s"></span><span style="animation-delay:.35s"></span><span style="animation-delay:.05s"></span>
+            <span style="animation-delay:.25s"></span><span style="animation-delay:.4s"></span><span style="animation-delay:.12s"></span>
+          </div>
+          <div class="viz-voice__lines">
+            <div class="is-user">"Reschedule my 3pm to Friday."</div>
+            <div class="is-agent">Done — moved to Fri 3:00pm. Confirmation sent.</div>
+          </div>
+        </div>
+
+        <!-- 06 · Data & analytics -->
+        <div class="viz blueprint viz-data" data-viz="5">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div class="viz-data__scan" aria-hidden="true"></div>
+          <div class="viz-data__kpis">
+            <div><b>98.4%</b><em>Uptime</em></div>
+            <div><b>1.2M</b><em>Rows/day</em></div>
+            <div><b>6</b><em>Sources</em></div>
+          </div>
+          <div class="viz-data__chart" aria-hidden="true">
+            <span style="animation-delay:0s"></span><span style="animation-delay:.2s"></span><span style="animation-delay:.4s"></span>
+            <span style="animation-delay:.15s"></span><span style="animation-delay:.5s"></span><span style="animation-delay:.3s"></span>
+            <span style="animation-delay:.1s"></span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="panel__body">
+        <span class="panel__tag" id="serviceTag">Autonomous systems</span>
+        <h3 class="panel__name" id="serviceName">Agentic AI</h3>
+        <p class="panel__copy" id="serviceWhat">Agents that read your data, decide, and take action across your tools — the ring at the center reasons, the nodes are the systems it drives. Every step runs behind guardrails and an audit trail.</p>
+        <span class="panel__subhead">What you get</span>
+        <div id="serviceDeliver">
+          <div class="tick"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-300)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg><span>Multi-step agents wired to your APIs, CRM and inbox</span></div>
+          <div class="tick"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-300)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg><span>Guardrails, evals and human sign-off gates</span></div>
+          <div class="tick"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-300)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg><span>A decision audit log for every action taken</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= 02 Industries ========================= -->
+<section class="sec" id="industries">
+  <div data-reveal>
+    <span class="sec__eyebrow sec__eyebrow--block">02 · Where it runs</span>
+    <hr class="sec__rule">
+    <h2 class="sec__title">Pick an industry — see what we'd build.</h2>
+    <p class="sec__lead">The same delivery team, tuned to the constraints of your sector. Select one to see where we'd start.</p>
+  </div>
+
+  <div class="stack" data-reveal data-reveal-delay="2">
+    <div class="chips" id="industryChips" role="tablist" aria-label="Industries">
+      <button type="button" class="chip chip--wide" role="tab" aria-pressed="true" aria-selected="true" data-index="0"><span class="chip__dot"></span>Healthcare</button>
+      <button type="button" class="chip chip--wide" role="tab" aria-pressed="false" aria-selected="false" data-index="1"><span class="chip__dot"></span>Finance</button>
+      <button type="button" class="chip chip--wide" role="tab" aria-pressed="false" aria-selected="false" data-index="2"><span class="chip__dot"></span>Retail &amp; ecommerce</button>
+      <button type="button" class="chip chip--wide" role="tab" aria-pressed="false" aria-selected="false" data-index="3"><span class="chip__dot"></span>Logistics</button>
+      <button type="button" class="chip chip--wide" role="tab" aria-pressed="false" aria-selected="false" data-index="4"><span class="chip__dot"></span>PropTech</button>
+      <button type="button" class="chip chip--wide" role="tab" aria-pressed="false" aria-selected="false" data-index="5"><span class="chip__dot"></span>EdTech</button>
+      <button type="button" class="chip chip--wide" role="tab" aria-pressed="false" aria-selected="false" data-index="6"><span class="chip__dot"></span>Manufacturing</button>
+      <button type="button" class="chip chip--wide" role="tab" aria-pressed="false" aria-selected="false" data-index="7"><span class="chip__dot"></span>Travel</button>
+    </div>
+
+    <div class="blueprint edge-bleed panel">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div class="panel__grid panel__grid--wide">
+        <div class="panel__body--roomy panel__body--edge">
+          <span class="panel__tag" id="industryTag">HIPAA-aware</span>
+          <h3 class="panel__name panel__name--lg" id="industryName">Healthcare</h3>
+          <p class="panel__copy panel__copy--roomy" id="industryBody">Clinical and operational software where privacy and audit trails are non-negotiable — built to survive a compliance review, not just a demo.</p>
+        </div>
+        <div class="panel__body--split">
+          <span class="panel__subhead panel__subhead--plain">Where we'd start</span>
+          <div id="industryPlays" style="display:flex;flex-direction:column;gap:16px">
+            <div class="tick tick--bare"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-300)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg><span>Intake, scheduling and no-show automation</span></div>
+            <div class="tick tick--bare"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-300)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg><span>RAG assistants grounded in your protocols</span></div>
+            <div class="tick tick--bare"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-300)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg><span>HIPAA-aware data pipelines and dashboards</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= 03 Process ========================= -->
+<section class="process" id="process">
+  <div class="process__inner">
+    <div data-reveal>
+      <span class="sec__kicker"><span class="sec__num">03</span><span class="sec__eyebrow">How we work</span></span>
+      <hr class="sec__rule">
+    </div>
+
+    <div class="rule-draw" data-reveal aria-hidden="true"></div>
+
+    <div class="steps">
+      <div class="step" data-reveal data-reveal-delay="3">
+        <span class="step__n">01</span>
+        <h3>Discover</h3>
+        <p>A short call, then a map of the workflow: where the hours go, what the system must do, and the one metric it will move.</p>
+      </div>
+      <div class="step" data-reveal data-reveal-delay="4">
+        <span class="step__n">02</span>
+        <h3>Specify</h3>
+        <p>A written spec and a clickable prototype. Scope, price and date on one sheet before any build begins.</p>
+      </div>
+      <div class="step" data-reveal data-reveal-delay="5">
+        <span class="step__n">03</span>
+        <h3>Build</h3>
+        <p>Working software every week — agents, pipelines and interfaces you can test against the spec, not a status deck.</p>
+      </div>
+      <div class="step" data-reveal data-reveal-delay="6">
+        <span class="step__n">04</span>
+        <h3>Run</h3>
+        <p>Deployed on your infrastructure with monitoring, evals and docs. We stay on to measure, tune and extend.</p>
+      </div>
+    </div>
+
+    <div class="blueprint edge-bleed plate" data-reveal>
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div class="plate__grid">
+        <div class="plate__cell">
+          <div class="plate__n">2 wks</div>
+          <div class="plate__label">Median time to a working demo</div>
+        </div>
+        <div class="plate__cell">
+          <div class="plate__n">100%</div>
+          <div class="plate__label">Code &amp; IP handed to you</div>
+        </div>
+        <div class="plate__cell">
+          <div class="plate__n">6</div>
+          <div class="plate__label">Capabilities under one roof</div>
+        </div>
+      </div>
+      <div class="plate__foot">
+        <span>Built for teams in</span>
+        <span class="plate__sector">Healthcare</span>
+        <span class="plate__sector">Finance</span>
+        <span class="plate__sector">Retail</span>
+        <span class="plate__sector">Logistics</span>
+        <span class="plate__sector">PropTech</span>
+        <span class="plate__sector">EdTech</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= 04 AI gap finder ========================= -->
+<section class="gaps" id="gaps">
+  <div class="gaps__mesh" aria-hidden="true"></div>
+  <div class="gaps__inner">
+    <div data-reveal>
+      <span class="sec__eyebrow sec__eyebrow--block">04 · Live tool</span>
+      <hr class="sec__rule">
+      <h2 class="sec__title">Find where AI can cut your workload.</h2>
+      <p class="sec__lead">Describe your team or a workflow in a sentence. Our agent maps three concrete places it could save you hours — right now, on this page.</p>
+    </div>
+
+    <div class="blueprint edge-bleed gaps__panel" data-reveal data-reveal-delay="2">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div class="gaps__pad">
+        <form class="gapform" id="gapForm">
+          <textarea class="input" id="gapInput" rows="3" maxlength="600" placeholder="e.g. A 6-person ops team handling invoices, supplier emails, and weekly reports." aria-label="Describe your team or workflow"></textarea>
+          <div class="gapform__examples" id="gapExamples">
+            <button type="button" class="gapform__example">A 6-person ops team handling invoices, supplier emails, and weekly reports.</button>
+            <button type="button" class="gapform__example">A clinic booking appointments by phone and chasing no-shows manually.</button>
+            <button type="button" class="gapform__example">An ecommerce team answering the same product questions all day.</button>
+          </div>
+          <div class="gapform__actions">
+            <button type="submit" class="btn btn-primary" id="gapCta" style="white-space:nowrap;min-height:44px">Find my AI gaps</button>
+            <span class="gapform__hint">Representative — a real map comes from discovery.</span>
+          </div>
+        </form>
+        <p class="gapform__err u-hidden" id="gapErr" role="alert"></p>
+        <div class="gapcards u-hidden" id="gapResults"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= 05 AI journey ========================= -->
+<section class="sec" id="journey">
+  <div data-reveal>
+    <span class="sec__eyebrow sec__eyebrow--block">05 · Where you are</span>
+    <hr class="sec__rule">
+    <h2 class="sec__title" style="margin-bottom:30px">Pick the path that fits — we'll meet you there.</h2>
+  </div>
+
+  <div class="stack" data-reveal data-reveal-delay="2">
+    <div class="chips" id="journeyChips" role="tablist" aria-label="Where you are">
+      <button type="button" class="chip chip--plain" role="tab" aria-pressed="true" aria-selected="true" data-index="0">I have an AI idea</button>
+      <button type="button" class="chip chip--plain" role="tab" aria-pressed="false" aria-selected="false" data-index="1">Scaling a model</button>
+      <button type="button" class="chip chip--plain" role="tab" aria-pressed="false" aria-selected="false" data-index="2">Adding AI to a product</button>
+      <button type="button" class="chip chip--plain" role="tab" aria-pressed="false" aria-selected="false" data-index="3">It isn’t shipping</button>
+    </div>
+
+    <div class="blueprint edge-bleed panel">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div class="panel__grid panel__grid--wide">
+        <div class="panel__body--roomy panel__body--edge">
+          <h3 class="panel__name panel__name--journey" id="journeyTitle">From idea to a working prototype in weeks</h3>
+          <p class="panel__copy panel__copy--roomy" id="journeyBody">You have the use case and the buy-in. We scope tightly, choose the right model and architecture, and put a working prototype in your hands fast.</p>
+          <a class="btn btn-primary panel__cta" id="journeyCta" href="#contact">Start with discovery</a>
+        </div>
+        <div class="panel__body--roomy" style="display:flex;flex-direction:column;gap:0">
+          <span class="panel__subhead panel__subhead--plain">How we work it</span>
+          <div id="journeySteps">
+            <div class="numstep"><span class="numstep__n">1</span><span class="numstep__t">Discovery workshop — surface the data, metric and constraints</span></div>
+            <div class="numstep"><span class="numstep__n">2</span><span class="numstep__t">Architecture decision doc — model, infra, eval strategy</span></div>
+            <div class="numstep"><span class="numstep__n">3</span><span class="numstep__t">Working prototype on real data, measured against your metric</span></div>
+            <div class="numstep"><span class="numstep__n">4</span><span class="numstep__t">A roadmap to production with dates you can defend</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= 06 FAQ ========================= -->
+<section class="sec sec--tight" id="faq">
+  <div data-reveal>
+    <span class="sec__eyebrow sec__eyebrow--block">06 · Questions, answered</span>
+    <hr class="sec__rule sec__rule--tight">
+  </div>
+
+  <div class="faq" id="faqList" data-reveal data-reveal-delay="3">
+    <div class="faq__item is-open">
+      <button type="button" class="faq__q" aria-expanded="true">
+        <span>What does an engagement look like?</span>
+        <span class="faq__sym" aria-hidden="true">−</span>
+      </button>
+      <div class="faq__wrap"><div><p class="faq__a">Two shapes: a fixed-scope build with a spec, a price and a date, or a monthly retainer for ongoing automation and product work. Both start with a short discovery call.</p></div></div>
+    </div>
+    <div class="faq__item">
+      <button type="button" class="faq__q" aria-expanded="false">
+        <span>How fast do we see something working?</span>
+        <span class="faq__sym" aria-hidden="true">+</span>
+      </button>
+      <div class="faq__wrap"><div><p class="faq__a">A working demo in about two weeks. We ship weekly from there — software you can click, not slideware.</p></div></div>
+    </div>
+    <div class="faq__item">
+      <button type="button" class="faq__q" aria-expanded="false">
+        <span>Can you work with our existing stack?</span>
+        <span class="faq__sym" aria-hidden="true">+</span>
+      </button>
+      <div class="faq__wrap"><div><p class="faq__a">Yes. We build on the stack you already run — React, Node, Python, your cloud — and wire agents into the tools you already use: CRMs, help desks, spreadsheets, internal APIs.</p></div></div>
+    </div>
+    <div class="faq__item">
+      <button type="button" class="faq__q" aria-expanded="false">
+        <span>Who owns what you build?</span>
+        <span class="faq__sym" aria-hidden="true">+</span>
+      </button>
+      <div class="faq__wrap"><div><p class="faq__a">You do. Repositories, documentation, infrastructure and model configuration are handed over in full at the end of every engagement.</p></div></div>
+    </div>
+    <div class="faq__item">
+      <button type="button" class="faq__q" aria-expanded="false">
+        <span>What does it cost?</span>
+        <span class="faq__sym" aria-hidden="true">+</span>
+      </button>
+      <div class="faq__wrap"><div><p class="faq__a">Fixed-scope builds are priced from the spec after discovery; retainers are a flat monthly rate. No hourly meters, no surprise line items.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= 07 Contact ========================= -->
+<section class="contact" id="contact">
+  <div class="contact__inner">
+    <div data-reveal>
+      <span class="sec__eyebrow sec__eyebrow--block">07 · The order desk</span>
+      <hr class="sec__rule">
+      <img class="contact__logo" src="assets/logo.png" alt="Indraam logo" width="150" height="150">
+      <h2 class="contact__title">Put us on the problem.</h2>
+      <p class="contact__lead">Tell us what eats your team's hours. We'll come back within one business day with a plan, a price and a date.</p>
+    </div>
+
+    <div data-reveal data-reveal-delay="3">
+      <form class="contact__form" id="contactForm" novalidate>
+        <label>
+          <span class="contact__label">Name</span>
+          <input class="input" id="cName" type="text" name="name" autocomplete="name">
+        </label>
+        <label>
+          <span class="contact__label">Work email</span>
+          <input class="input" id="cEmail" type="email" name="email" autocomplete="email">
+        </label>
+        <label>
+          <span class="contact__label">What should the system do?</span>
+          <textarea class="input" id="cNote" name="note" rows="4"></textarea>
+        </label>
+        <p class="contact__err u-hidden" id="cErr" role="alert"></p>
+        <div class="contact__actions">
+          <button type="submit" class="btn btn-primary" style="white-space:nowrap;min-height:44px">Book a call</button>
+          <span class="contact__note">No forms into the void — a person reads this.</span>
+        </div>
+      </form>
+
+      <div class="blueprint contact__done u-hidden" id="contactDone">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <h3>Received.</h3>
+        <p>Your note is on the desk. We'll reply within one business day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ========================= Footer ========================= -->
+<footer class="foot">
+  <span class="foot__brand">Indraam</span>
+  <span>AI automation · Web &amp; mobile · Digital products</span>
+  <span>© 2026 Indraam · indraam.com</span>
+</footer>
+
+<!--
+  Endpoint wiring. These are paths on your own origin — the OpenAI key lives
+  on the server behind them and is never sent to the browser. See README.md.
+  Set any value to null to make that surface fall back to its offline copy.
+-->
+<script>
+  window.INDRAAM_CONFIG = {
+    agentEndpoint: '/api/agent',
+    gapEndpoint: '/api/gaps',
+    contactEndpoint: '/api/contact'
+  };
+</script>
+<script src="js/app.js"></script>
+</body>
+</html>

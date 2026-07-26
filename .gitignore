@@ -1,0 +1,14 @@
+# Secrets — never commit these
+.env
+.env.*
+!.env.example
+
+# Dependencies / build output
+node_modules/
+.vercel/
+.netlify/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.log

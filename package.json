@@ -1,0 +1,21 @@
+{
+  "name": "indraam-landing",
+  "version": "1.1.0",
+  "private": true,
+  "description": "Indraam landing page — static front end, serverless AI endpoints, admin dashboard.",
+  "scripts": {
+    "dev": "node dev-server.js",
+    "start": "node dev-server.js",
+    "dev:netlify": "netlify dev",
+    "secret": "node -e \"console.log(require('crypto').randomBytes(32).toString('hex'))\"",
+    "check": "node -e \"['js/app.js','js/admin.js','api/_lib/core.js','api/_lib/openai.js','api/_lib/guard.js','api/_lib/netlify.js','api/_lib/db.js','api/_lib/auth.js','api/agent.js','api/gaps.js','api/contact.js','api/admin/login.js','api/admin/data.js','api/admin/export.js'].forEach(f=>require('child_process').execSync('node --check '+JSON.stringify(f)));console.log('syntax OK')\""
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mongodb": "^6.10.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
