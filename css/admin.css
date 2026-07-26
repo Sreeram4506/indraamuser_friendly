@@ -10,6 +10,12 @@
   --edge: clamp(16px, 3vw, 40px);
 }
 
+/* The `hidden` attribute must always win. Several elements below (.login,
+   .tabs, etc.) set their own `display`, which has the same specificity as
+   the browser's default [hidden] rule — without this, toggling `.hidden`
+   in JS has no visual effect once an author rule also targets the element. */
+[hidden] { display: none !important; }
+
 /* --------------------------------------------------------------------------
    Sign in
    -------------------------------------------------------------------------- */
