@@ -1241,13 +1241,14 @@ a:hover { color: var(--color-accent-200); }
 }
 .foot__top {
   display: flex;
-  justify-content: space-between;
-  gap: 48px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: clamp(48px, 10vw, 160px);
   flex-wrap: wrap;
   padding-bottom: 32px;
   border-bottom: 1px solid var(--color-divider);
 }
-.foot__about { display: flex; flex-direction: column; gap: 14px; max-width: 320px; }
+.foot__about { display: flex; flex-direction: column; gap: 14px; flex: 1 1 260px; max-width: 320px; }
 .foot__logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
 .foot__logo img { display: block; border-radius: var(--radius-sm); }
 .foot__brand { letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; color: var(--color-text); }
