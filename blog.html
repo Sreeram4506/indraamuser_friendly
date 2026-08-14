@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blog — Indraam</title>
+<meta name="description" content="Notes on shipping agentic AI, automation and product engineering, from the team at Indraam.">
+<meta name="theme-color" content="#2b2b2d">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Blog — Indraam">
+<meta property="og:description" content="Notes on shipping agentic AI, automation and product engineering, from the team at Indraam.">
+<meta property="og:image" content="assets/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="css/design-system.css">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+
+<!-- ========================= Nav ========================= -->
+<nav class="nav" id="nav" aria-label="Primary">
+  <a class="nav-brand" href="index.html">Indraam</a>
+
+  <div class="nav__links">
+    <a class="nav__link" href="index.html#about">About</a>
+    <a class="nav__link" href="index.html#services">Services</a>
+    <a class="nav__link" href="index.html#industries">Industries</a>
+    <a class="nav__link" href="index.html#process">Process</a>
+    <a class="nav__link" href="index.html#faq">FAQ</a>
+    <a class="nav__link" href="blog.html">Blog</a>
+    <a class="btn btn-primary nav__cta" href="index.html#contact">Book a call</a>
+  </div>
+
+  <button type="button" class="nav__toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navDrawer">
+    <span></span><span></span><span></span>
+  </button>
+
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+
+  <div class="nav__drawer u-hidden" id="navDrawer">
+    <a href="index.html#about">About</a>
+    <a href="index.html#services">Services</a>
+    <a href="index.html#industries">Industries</a>
+    <a href="index.html#process">Process</a>
+    <a href="index.html#faq">FAQ</a>
+    <a href="blog.html">Blog</a>
+    <a class="btn btn-primary" href="index.html#contact">Book a call</a>
+  </div>
+</nav>
+
+<main id="top">
+
+<!-- ========================= Blog header ========================= -->
+<section class="sec">
+  <div data-reveal>
+    <span class="sec__eyebrow sec__eyebrow--block">From the studio</span>
+    <hr class="sec__rule">
+    <h1 class="sec__title">Notes on shipping AI systems.</h1>
+    <p class="sec__lead">Short, practical write-ups on agentic AI, automation and the engineering decisions behind what we ship — from the team building it.</p>
+  </div>
+</section>
+
+<!-- ========================= Post grid ========================= -->
+<section class="sec sec--tight">
+  <div class="blog__grid" data-reveal data-reveal-delay="1">
+    <article class="blueprint blogcard">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <span class="blogcard__tag">Agentic AI</span>
+      <h2 class="blogcard__title">What actually breaks when you put an agent in production</h2>
+      <p class="blogcard__excerpt">The demo always works. Here's what fails once real data, real users and real latency show up — and the guardrails that catch it before your customer does.</p>
+      <div class="blogcard__meta"><span>Coming soon</span></div>
+    </article>
+
+    <article class="blueprint blogcard">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <span class="blogcard__tag">Automation</span>
+      <h2 class="blogcard__title">The workflow audit we run before we automate anything</h2>
+      <p class="blogcard__excerpt">Not every repetitive task should be automated as-is. The checklist we use to decide what to fix first, what to remove, and only then what to wire up.</p>
+      <div class="blogcard__meta"><span>Coming soon</span></div>
+    </article>
+
+    <article class="blueprint blogcard">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <span class="blogcard__tag">Engineering</span>
+      <h2 class="blogcard__title">Evals are the thing nobody budgets time for</h2>
+      <p class="blogcard__excerpt">Everyone plans the build. Almost nobody plans how they'll know it's working. A practical starting point for evaluating an LLM feature before it ships.</p>
+      <div class="blogcard__meta"><span>Coming soon</span></div>
+    </article>
+
+    <article class="blueprint blogcard">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <span class="blogcard__tag">Product</span>
+      <h2 class="blogcard__title">Scoping a fixed-price AI project without the scope creep</h2>
+      <p class="blogcard__excerpt">How we write a spec that holds up once the build starts — and what we push back on when a "quick addition" shows up mid-sprint.</p>
+      <div class="blogcard__meta"><span>Coming soon</span></div>
+    </article>
+  </div>
+
+  <p class="blog__note">New posts are on the way. In the meantime, <a href="index.html#contact">book a call</a> or follow along on <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a> and <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>.</p>
+</section>
+
+</main>
+
+<!-- ========================= Footer ========================= -->
+<footer class="foot">
+  <div class="foot__top">
+    <div class="foot__about">
+      <a class="foot__logo" href="index.html">
+        <img src="assets/logo.png" alt="Indraam logo" width="36" height="36">
+        <span class="foot__brand">Indraam</span>
+      </a>
+      <p class="foot__caption">AI automation · Web &amp; mobile · Digital products</p>
+      <div class="foot__social" aria-label="Social media">
+        <a class="foot__social-link" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Indraam on Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg>
+        </a>
+        <a class="foot__social-link" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="Indraam on LinkedIn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 9v9"></path><path d="M6.5 5.5v.01"></path><path d="M11 18V9"></path><path d="M11 13c0-2.2 1.8-4 4-4s3.5 1.8 3.5 4v5"></path></svg>
+        </a>
+      </div>
+    </div>
+
+    <nav class="foot__links" aria-label="Footer">
+      <div class="foot__col">
+        <span class="foot__heading">Sections</span>
+        <a href="index.html#about">About</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#industries">Industries</a>
+        <a href="index.html#process">Process</a>
+        <a href="index.html#gaps">AI gaps</a>
+        <a href="index.html#journey">Journey</a>
+        <a href="index.html#faq">FAQ</a>
+      </div>
+      <div class="foot__col">
+        <span class="foot__heading">Company</span>
+        <a href="blog.html">Blog</a>
+        <a href="index.html#contact">Book a call</a>
+        <a href="#top">Back to top</a>
+      </div>
+    </nav>
+  </div>
+
+  <div class="foot__bottom">
+    <span>© 2026 Indraam · indraam.com</span>
+  </div>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>
