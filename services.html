@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Services — Indraam</title>
+<meta name="description" content="Six capabilities, one delivery team — agentic AI, automation, web & mobile, product & UI/UX, voice & chat, and data & analytics.">
+<meta name="theme-color" content="#2b2b2d">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Services — Indraam">
+<meta property="og:description" content="Six capabilities, one delivery team — agentic AI, automation, web & mobile, product & UI/UX, voice & chat, and data & analytics.">
+<meta property="og:image" content="assets/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="css/design-system.css">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+
+<!-- ========================= Nav ========================= -->
+<nav class="nav" id="nav" aria-label="Primary">
+  <a class="nav-brand" href="index.html"><img class="nav-brand__mark" src="assets/logo.png" alt="" width="32" height="32">Indraam</a>
+
+  <div class="nav__links">
+    <a class="nav__link" href="about.html">About</a>
+    <a class="nav__link" href="services.html">Services</a>
+    <a class="nav__link" href="index.html#products">Products</a>
+    <a class="nav__link" href="index.html#industries">Industries</a>
+    <a class="nav__link" href="index.html#process">Process</a>
+    <a class="nav__link" href="index.html#gaps">AI gaps</a>
+    <a class="nav__link" href="journey.html">Journey</a>
+    <a class="nav__link" href="faq.html">FAQ</a>
+    <a class="nav__link" href="blog.html">Blog</a>
+    <a class="btn btn-primary nav__cta" href="index.html#contact">Book a call</a>
+  </div>
+
+  <button type="button" class="nav__toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navDrawer">
+    <span></span><span></span><span></span>
+  </button>
+
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+
+  <div class="nav__drawer u-hidden" id="navDrawer">
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="index.html#products">Products</a>
+    <a href="index.html#industries">Industries</a>
+    <a href="index.html#process">Process</a>
+    <a href="index.html#gaps">AI gaps</a>
+    <a href="journey.html">Journey</a>
+    <a href="faq.html">FAQ</a>
+    <a href="blog.html">Blog</a>
+    <a class="btn btn-primary" href="index.html#contact">Book a call</a>
+  </div>
+</nav>
+
+<main id="top">
+
+<!-- ========================= Services ========================= -->
+<section class="sec">
+  <div data-reveal>
+    <span class="sec__eyebrow sec__eyebrow--block">What we build</span>
+    <hr class="sec__rule">
+    <h1 class="sec__title">Tap a capability — watch what we'd build.</h1>
+    <p class="sec__lead">Six capabilities, one delivery team. Select one and the panel below animates exactly how the system works — the agents and interfaces on top, the pipelines and data underneath.</p>
+  </div>
+
+  <div class="chips chips--scroll" id="serviceChips" data-reveal data-reveal-delay="1" role="tablist" aria-label="Capabilities">
+    <button type="button" class="chip" role="tab" aria-pressed="true" aria-selected="true" data-index="0"><span class="chip__no">01</span>Agentic AI</button>
+    <button type="button" class="chip" role="tab" aria-pressed="false" aria-selected="false" data-index="1"><span class="chip__no">02</span>Automation</button>
+    <button type="button" class="chip" role="tab" aria-pressed="false" aria-selected="false" data-index="2"><span class="chip__no">03</span>Web &amp; mobile</button>
+    <button type="button" class="chip" role="tab" aria-pressed="false" aria-selected="false" data-index="3"><span class="chip__no">04</span>Product &amp; UI/UX</button>
+    <button type="button" class="chip" role="tab" aria-pressed="false" aria-selected="false" data-index="4"><span class="chip__no">05</span>Voice &amp; chat</button>
+    <button type="button" class="chip" role="tab" aria-pressed="false" aria-selected="false" data-index="5"><span class="chip__no">06</span>Data &amp; analytics</button>
+  </div>
+
+  <div class="blueprint edge-bleed panel" id="servicePanel" data-reveal data-reveal-delay="2">
+    <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+
+    <div class="panel__head">
+      <span class="panel__step" id="serviceStep">01 / 06</span>
+      <div class="panel__segs" id="serviceSegs" aria-hidden="true">
+        <span class="panel__seg is-on"></span><span class="panel__seg"></span><span class="panel__seg"></span>
+        <span class="panel__seg"></span><span class="panel__seg"></span><span class="panel__seg"></span>
+      </div>
+    </div>
+
+    <div class="panel__grid">
+      <div class="panel__stage" id="serviceStage">
+
+        <!-- 01 · Agentic AI -->
+        <div class="viz viz-agent is-on" data-viz="0">
+          <svg class="viz-agent__wires" viewBox="0 0 320 240" preserveAspectRatio="none" width="100%" height="100%" aria-hidden="true">
+            <g stroke="var(--color-accent)" stroke-width="1" fill="none" opacity="0.55" stroke-dasharray="4 5">
+              <line x1="160" y1="120" x2="58" y2="44"></line>
+              <line x1="160" y1="120" x2="262" y2="44"></line>
+              <line x1="160" y1="120" x2="58" y2="196"></line>
+              <line x1="160" y1="120" x2="262" y2="196"></line>
+            </g>
+          </svg>
+          <span class="viz-agent__node viz-agent__node--tl">CRM</span>
+          <span class="viz-agent__node viz-agent__node--tr">APIs</span>
+          <span class="viz-agent__node viz-agent__node--bl">Inbox</span>
+          <span class="viz-agent__node viz-agent__node--br">Database</span>
+          <div class="viz-agent__core">Agent</div>
+        </div>
+
+        <!-- 02 · Automation -->
+        <div class="viz viz-flow" data-viz="1">
+          <svg viewBox="0 0 360 210" width="100%" height="auto" aria-hidden="true" font-family="Barlow, sans-serif">
+            <g fill="none" stroke="var(--color-accent)" stroke-width="1.5">
+              <path d="M102,105 C132,105 122,50 152,50"></path>
+              <path d="M102,105 C132,105 122,160 152,160"></path>
+              <path d="M248,50 C266,50 254,105 272,105"></path>
+              <path d="M248,160 C266,160 254,105 272,105"></path>
+            </g>
+            <g class="viz-flow__dash" fill="none" stroke="color-mix(in srgb, var(--color-bg) 70%, transparent)" stroke-width="1.5" stroke-dasharray="1 7" stroke-linecap="round" opacity="0.7">
+              <path d="M102,105 C132,105 122,50 152,50"></path>
+              <path d="M102,105 C132,105 122,160 152,160"></path>
+              <path d="M248,50 C266,50 254,105 272,105"></path>
+              <path d="M248,160 C266,160 254,105 272,105"></path>
+            </g>
+            <circle r="4.5" fill="var(--color-accent)"><animateMotion dur="2.6s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" path="M102,105 C132,105 122,50 152,50"></animateMotion></circle>
+            <circle r="4.5" fill="var(--color-accent)"><animateMotion dur="2.6s" begin="0.5s" repeatCount="indefinite" path="M102,105 C132,105 122,160 152,160"></animateMotion></circle>
+            <circle r="4.5" fill="var(--color-accent)"><animateMotion dur="2.6s" begin="1.3s" repeatCount="indefinite" path="M248,50 C266,50 254,105 272,105"></animateMotion></circle>
+            <circle r="4.5" fill="var(--color-accent)"><animateMotion dur="2.6s" begin="1.8s" repeatCount="indefinite" path="M248,160 C266,160 254,105 272,105"></animateMotion></circle>
+            <g stroke="var(--color-accent)" stroke-width="1.5" fill="var(--color-neutral-900)">
+              <circle cx="102" cy="105" r="3.5"></circle><circle cx="152" cy="50" r="3.5"></circle><circle cx="152" cy="160" r="3.5"></circle>
+              <circle cx="248" cy="50" r="3.5"></circle><circle cx="248" cy="160" r="3.5"></circle><circle cx="272" cy="105" r="3.5"></circle>
+            </g>
+            <g>
+              <rect class="viz-flow__trigger" x="10" y="85" width="92" height="40" rx="9" fill="var(--color-accent-900)" stroke="var(--color-accent)" stroke-width="1.5"></rect>
+              <rect x="17" y="92" width="26" height="26" rx="6" fill="var(--color-accent)"></rect>
+              <path d="M27 100 v10 M27 100 l-4 4 M27 100 l4 4" stroke="var(--color-neutral-900)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" transform="rotate(90 30 105)"></path>
+              <text x="50" y="102" fill="var(--color-bg)" font-size="10.5" font-weight="600">Trigger</text>
+              <text x="50" y="115" fill="color-mix(in srgb, var(--color-bg) 55%, transparent)" font-size="8">new invoice</text>
+            </g>
+            <g>
+              <rect x="152" y="30" width="96" height="40" rx="9" fill="var(--color-neutral-900)" stroke="var(--color-divider)" stroke-width="1.5"></rect>
+              <rect x="159" y="37" width="26" height="26" rx="6" fill="color-mix(in srgb, var(--color-accent) 55%, transparent)"></rect>
+              <text x="192" y="47" fill="var(--color-bg)" font-size="10.5" font-weight="600">Extract</text>
+              <text x="192" y="60" fill="color-mix(in srgb, var(--color-bg) 55%, transparent)" font-size="8">AI parse</text>
+            </g>
+            <g>
+              <rect x="152" y="140" width="96" height="40" rx="9" fill="var(--color-neutral-900)" stroke="var(--color-divider)" stroke-width="1.5"></rect>
+              <rect x="159" y="147" width="26" height="26" rx="6" fill="color-mix(in srgb, var(--color-accent) 55%, transparent)"></rect>
+              <text x="192" y="157" fill="var(--color-bg)" font-size="10.5" font-weight="600">Route</text>
+              <text x="192" y="170" fill="color-mix(in srgb, var(--color-bg) 55%, transparent)" font-size="8">if / else</text>
+            </g>
+            <g>
+              <rect x="272" y="85" width="82" height="40" rx="9" fill="var(--color-neutral-900)" stroke="var(--color-accent)" stroke-width="1.5"></rect>
+              <rect x="279" y="92" width="26" height="26" rx="6" fill="var(--color-accent)"></rect>
+              <path d="M292 100 l4 4 l6 -8" stroke="var(--color-neutral-900)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
+              <text x="312" y="102" fill="var(--color-bg)" font-size="10.5" font-weight="600">Log</text>
+              <text x="312" y="115" fill="color-mix(in srgb, var(--color-bg) 55%, transparent)" font-size="8">+ notify</text>
+            </g>
+          </svg>
+          <div class="viz-flow__note">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+            No human in the loop
+          </div>
+        </div>
+
+        <!-- 03 · Web & mobile -->
+        <div class="viz blueprint viz-build" data-viz="2">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div class="viz-build__bar" aria-hidden="true">
+            <i></i><i></i><i></i><u></u>
+          </div>
+          <div class="viz-build__body" aria-hidden="true">
+            <div class="viz-build__hd"></div>
+            <div class="viz-build__cols"><div></div><div></div></div>
+            <div class="viz-build__cta"></div>
+          </div>
+        </div>
+
+        <!-- 04 · Product & UI/UX -->
+        <div class="viz viz-uiux" data-viz="3">
+          <div class="viz-uiux__phone">
+            <div class="viz-uiux__notch"></div>
+            <div class="viz-uiux__screen">
+              <div class="viz-uiux__layer viz-uiux__layer--wire" aria-hidden="true">
+                <div class="viz-uiux__row">
+                  <span class="viz-uiux__avatar"></span>
+                  <span class="viz-uiux__lines"><i></i><i></i></span>
+                </div>
+                <div class="viz-uiux__box"></div>
+                <div class="viz-uiux__pair"><div></div><div></div></div>
+                <div class="viz-uiux__cta"></div>
+              </div>
+              <div class="viz-uiux__layer viz-uiux__layer--hifi" aria-hidden="true">
+                <div class="viz-uiux__row">
+                  <span class="viz-uiux__avatar"></span>
+                  <span class="viz-uiux__lines"><i></i><i></i></span>
+                </div>
+                <div class="viz-uiux__chart"><span></span><span></span><span></span><span></span></div>
+                <div class="viz-uiux__kpis">
+                  <div class="viz-uiux__kpi"><b>2.4k</b><i></i></div>
+                  <div class="viz-uiux__kpi"><b>98%</b><i></i></div>
+                </div>
+                <div class="viz-uiux__go">Continue</div>
+              </div>
+            </div>
+            <svg class="viz-uiux__cursor" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2l14 8-6 1.5L9 18z" fill="var(--color-bg)" stroke="var(--color-neutral-900)" stroke-width="1.2" stroke-linejoin="round"></path></svg>
+          </div>
+          <div class="viz-uiux__legend">
+            <div><span class="is-wire"></span><em>Wireframe</em></div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-300)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg>
+            <div><span class="is-live"></span><em>Shipped</em></div>
+          </div>
+        </div>
+
+        <!-- 05 · Voice & chat -->
+        <div class="viz viz-voice" data-viz="4">
+          <div class="viz-voice__mic">
+            <span class="viz-voice__ring" aria-hidden="true"></span>
+            <span class="viz-voice__ring viz-voice__ring--b" aria-hidden="true"></span>
+            <div class="viz-voice__badge">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-200)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg>
+            </div>
+          </div>
+          <div class="viz-voice__wave" aria-hidden="true">
+            <span style="animation-delay:0s"></span><span style="animation-delay:.15s"></span><span style="animation-delay:.3s"></span>
+            <span style="animation-delay:.1s"></span><span style="animation-delay:.35s"></span><span style="animation-delay:.05s"></span>
+            <span style="animation-delay:.25s"></span><span style="animation-delay:.4s"></span><span style="animation-delay:.12s"></span>
+          </div>
+          <div class="viz-voice__lines">
+            <div class="is-user">"Reschedule my 3pm to Friday."</div>
+            <div class="is-agent">Done — moved to Fri 3:00pm. Confirmation sent.</div>
+          </div>
+        </div>
+
+        <!-- 06 · Data & analytics -->
+        <div class="viz blueprint viz-data" data-viz="5">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div class="viz-data__scan" aria-hidden="true"></div>
+          <div class="viz-data__kpis">
+            <div><b>98.4%</b><em>Uptime</em></div>
+            <div><b>1.2M</b><em>Rows/day</em></div>
+            <div><b>6</b><em>Sources</em></div>
+          </div>
+          <div class="viz-data__chart" aria-hidden="true">
+            <span style="animation-delay:0s"></span><span style="animation-delay:.2s"></span><span style="animation-delay:.4s"></span>
+            <span style="animation-delay:.15s"></span><span style="animation-delay:.5s"></span><span style="animation-delay:.3s"></span>
+            <span style="animation-delay:.1s"></span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="panel__body">
+        <span class="panel__tag" id="serviceTag">Autonomous systems</span>
+        <h3 class="panel__name" id="serviceName">Agentic AI</h3>
+        <p class="panel__copy" id="serviceWhat">Agents that read your data, decide, and take action across your tools — the ring at the center reasons, the nodes are the systems it drives. Every step runs behind guardrails and an audit trail.</p>
+        <span class="panel__subhead">What you get</span>
+        <div id="serviceDeliver">
+          <div class="tick"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-300)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg><span>Multi-step agents wired to your APIs, CRM and inbox</span></div>
+          <div class="tick"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-300)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg><span>Guardrails, evals and human sign-off gates</span></div>
+          <div class="tick"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-300)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg><span>A decision audit log for every action taken</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= Closing CTA ========================= -->
+<section class="sec sec--tight">
+  <div class="hero__ctas" data-reveal>
+    <a class="btn btn-primary" href="index.html#contact">Book a call</a>
+    <a class="btn btn-ghost" href="index.html">Back to home</a>
+  </div>
+</section>
+
+</main>
+
+<!-- ========================= Footer ========================= -->
+<footer class="foot">
+  <div class="foot__top">
+    <div class="foot__about">
+      <a class="foot__logo" href="index.html">
+        <img src="assets/logo.png" alt="Indraam logo" width="36" height="36">
+        <span class="foot__brand">Indraam</span>
+      </a>
+      <p class="foot__caption">AI automation · Web &amp; mobile · Digital products</p>
+      <div class="foot__social" aria-label="Social media">
+        <a class="foot__social-link" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Indraam on Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg>
+        </a>
+        <a class="foot__social-link" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="Indraam on LinkedIn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 9v9"></path><path d="M6.5 5.5v.01"></path><path d="M11 18V9"></path><path d="M11 13c0-2.2 1.8-4 4-4s3.5 1.8 3.5 4v5"></path></svg>
+        </a>
+      </div>
+    </div>
+
+    <nav class="foot__links" aria-label="Footer">
+      <div class="foot__col">
+        <span class="foot__heading">Sections</span>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="index.html#products">Products</a>
+        <a href="index.html#industries">Industries</a>
+        <a href="index.html#process">Process</a>
+        <a href="index.html#gaps">AI gaps</a>
+        <a href="journey.html">Journey</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+      <div class="foot__col">
+        <span class="foot__heading">Company</span>
+        <a href="blog.html">Blog</a>
+        <a href="index.html#contact">Book a call</a>
+        <a href="#top">Back to top</a>
+      </div>
+    </nav>
+  </div>
+
+  <div class="foot__bottom">
+    <span>© 2026 Indraam · indraam.com</span>
+  </div>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>

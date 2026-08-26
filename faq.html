@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Blog — Indraam</title>
-<meta name="description" content="Notes on shipping agentic AI, automation and product engineering, from the team at Indraam.">
+<title>FAQ — Indraam</title>
+<meta name="description" content="What an engagement looks like, how fast you'll see something working, who owns the code, and what it costs.">
 <meta name="theme-color" content="#2b2b2d">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Blog — Indraam">
-<meta property="og:description" content="Notes on shipping agentic AI, automation and product engineering, from the team at Indraam.">
+<meta property="og:title" content="FAQ — Indraam">
+<meta property="og:description" content="What an engagement looks like, how fast you'll see something working, who owns the code, and what it costs.">
 <meta property="og:image" content="assets/logo.png">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -60,53 +60,57 @@
 
 <main id="top">
 
-<!-- ========================= Blog header ========================= -->
-<section class="sec">
-  <div data-reveal>
-    <span class="sec__eyebrow sec__eyebrow--block">From the studio</span>
-    <hr class="sec__rule">
-    <h1 class="sec__title">Notes on shipping AI systems.</h1>
-    <p class="sec__lead">Short, practical write-ups on agentic AI, automation and the engineering decisions behind what we ship — from the team building it.</p>
-  </div>
-</section>
-
-<!-- ========================= Post grid ========================= -->
+<!-- ========================= FAQ ========================= -->
 <section class="sec sec--tight">
-  <div class="blog__grid" data-reveal data-reveal-delay="1">
-    <article class="blueprint blogcard">
-      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-      <span class="blogcard__tag">Agentic AI</span>
-      <h2 class="blogcard__title">What actually breaks when you put an agent in production</h2>
-      <p class="blogcard__excerpt">The demo always works. Here's what fails once real data, real users and real latency show up — and the guardrails that catch it before your customer does.</p>
-      <div class="blogcard__meta"><span>Coming soon</span></div>
-    </article>
-
-    <article class="blueprint blogcard">
-      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-      <span class="blogcard__tag">Automation</span>
-      <h2 class="blogcard__title">The workflow audit we run before we automate anything</h2>
-      <p class="blogcard__excerpt">Not every repetitive task should be automated as-is. The checklist we use to decide what to fix first, what to remove, and only then what to wire up.</p>
-      <div class="blogcard__meta"><span>Coming soon</span></div>
-    </article>
-
-    <article class="blueprint blogcard">
-      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-      <span class="blogcard__tag">Engineering</span>
-      <h2 class="blogcard__title">Evals are the thing nobody budgets time for</h2>
-      <p class="blogcard__excerpt">Everyone plans the build. Almost nobody plans how they'll know it's working. A practical starting point for evaluating an LLM feature before it ships.</p>
-      <div class="blogcard__meta"><span>Coming soon</span></div>
-    </article>
-
-    <article class="blueprint blogcard">
-      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-      <span class="blogcard__tag">Product</span>
-      <h2 class="blogcard__title">Scoping a fixed-price AI project without the scope creep</h2>
-      <p class="blogcard__excerpt">How we write a spec that holds up once the build starts — and what we push back on when a "quick addition" shows up mid-sprint.</p>
-      <div class="blogcard__meta"><span>Coming soon</span></div>
-    </article>
+  <div data-reveal>
+    <span class="sec__eyebrow sec__eyebrow--block">Questions, answered</span>
+    <hr class="sec__rule">
+    <h1 class="sec__title">Answers before you have to ask.</h1>
+    <p class="sec__lead">What an engagement looks like, how fast you'll see something working, who owns the code, and what it costs.</p>
   </div>
 
-  <p class="blog__note">New posts are on the way. In the meantime, <a href="index.html#contact">book a call</a> or follow along on <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a> and <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>.</p>
+  <div class="faq" id="faqList" data-reveal data-reveal-delay="3">
+    <div class="faq__item is-open">
+      <button type="button" class="faq__q" aria-expanded="true">
+        <span>What does an engagement look like?</span>
+        <span class="faq__sym" aria-hidden="true">−</span>
+      </button>
+      <div class="faq__wrap"><div><p class="faq__a">Two shapes: a fixed-scope build with a spec, a price and a date, or a monthly retainer for ongoing automation and product work. Both start with a short discovery call.</p></div></div>
+    </div>
+    <div class="faq__item">
+      <button type="button" class="faq__q" aria-expanded="false">
+        <span>How fast do we see something working?</span>
+        <span class="faq__sym" aria-hidden="true">+</span>
+      </button>
+      <div class="faq__wrap"><div><p class="faq__a">A working demo in about two weeks. We ship weekly from there — software you can click, not slideware.</p></div></div>
+    </div>
+    <div class="faq__item">
+      <button type="button" class="faq__q" aria-expanded="false">
+        <span>Can you work with our existing stack?</span>
+        <span class="faq__sym" aria-hidden="true">+</span>
+      </button>
+      <div class="faq__wrap"><div><p class="faq__a">Yes. We build on the stack you already run — React, Node, Python, your cloud — and wire agents into the tools you already use: CRMs, help desks, spreadsheets, internal APIs.</p></div></div>
+    </div>
+    <div class="faq__item">
+      <button type="button" class="faq__q" aria-expanded="false">
+        <span>Who owns what you build?</span>
+        <span class="faq__sym" aria-hidden="true">+</span>
+      </button>
+      <div class="faq__wrap"><div><p class="faq__a">You do. Repositories, documentation, infrastructure and model configuration are handed over in full at the end of every engagement.</p></div></div>
+    </div>
+    <div class="faq__item">
+      <button type="button" class="faq__q" aria-expanded="false">
+        <span>What does it cost?</span>
+        <span class="faq__sym" aria-hidden="true">+</span>
+      </button>
+      <div class="faq__wrap"><div><p class="faq__a">Fixed-scope builds are priced from the spec after discovery; retainers are a flat monthly rate. No hourly meters, no surprise line items.</p></div></div>
+    </div>
+  </div>
+
+  <div class="hero__ctas" data-reveal style="margin-top:32px">
+    <a class="btn btn-primary" href="index.html#contact">Book a call</a>
+    <a class="btn btn-ghost" href="index.html">Back to home</a>
+  </div>
 </section>
 
 </main>

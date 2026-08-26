@@ -5,8 +5,8 @@
   --color-bg: #f2f2f3;
   --color-surface: #e9e9ea;
   --color-text: #1d1f20;
-  --color-accent: #5980a6;
-  --color-accent-2: #728fab;
+  --color-accent: #9b7527;
+  --color-accent-2: #bc974e;
   --color-divider: color-mix(in srgb, #1d1f20 16%, transparent);
 
   /* Tonal ramps — generated in OKLCH on one shared lightness scale, so the
@@ -21,25 +21,25 @@
   --color-neutral-800: #424244;
   --color-neutral-900: #2b2b2d;
 
-  --color-accent-100: #eef6ff;
-  --color-accent-200: #d6ebff;
-  --color-accent-300: #b5d9fd;
-  --color-accent-400: #94bce3;
-  --color-accent-500: #749dc4;
-  --color-accent-600: #597ea3;
-  --color-accent-700: #416180;
-  --color-accent-800: #2c455d;
-  --color-accent-900: #1d2d3d;
+  --color-accent-100: #fdf6e7;
+  --color-accent-200: #f8e9c9;
+  --color-accent-300: #edcd8c;
+  --color-accent-400: #dbb057;
+  --color-accent-500: #c09030;
+  --color-accent-600: #9b7527;
+  --color-accent-700: #7a5c1f;
+  --color-accent-800: #5a4416;
+  --color-accent-900: #372a10;
 
-  --color-accent-2-100: #eef6ff;
-  --color-accent-2-200: #d6ebff;
-  --color-accent-2-300: #bdd8f2;
-  --color-accent-2-400: #9ebbd8;
-  --color-accent-2-500: #7e9cb8;
-  --color-accent-2-600: #627d98;
-  --color-accent-2-700: #486077;
-  --color-accent-2-800: #314457;
-  --color-accent-2-900: #1f2d3a;
+  --color-accent-2-100: #fbf5e9;
+  --color-accent-2-200: #f4e7cd;
+  --color-accent-2-300: #e6d2a7;
+  --color-accent-2-400: #d0b680;
+  --color-accent-2-500: #b89b61;
+  --color-accent-2-600: #9c824f;
+  --color-accent-2-700: #776540;
+  --color-accent-2-800: #554930;
+  --color-accent-2-900: #332c1e;
 
   --font-heading: "Barlow Condensed", system-ui, sans-serif;
   --font-heading-weight: 600;

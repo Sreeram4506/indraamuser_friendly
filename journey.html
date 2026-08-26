@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Blog — Indraam</title>
-<meta name="description" content="Notes on shipping agentic AI, automation and product engineering, from the team at Indraam.">
+<title>Journey — Indraam</title>
+<meta name="description" content="Four common starting points — from a first AI idea to a stalled project — each with its own plan.">
 <meta name="theme-color" content="#2b2b2d">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Blog — Indraam">
-<meta property="og:description" content="Notes on shipping agentic AI, automation and product engineering, from the team at Indraam.">
+<meta property="og:title" content="Journey — Indraam">
+<meta property="og:description" content="Four common starting points — from a first AI idea to a stalled project — each with its own plan.">
 <meta property="og:image" content="assets/logo.png">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -60,53 +60,50 @@
 
 <main id="top">
 
-<!-- ========================= Blog header ========================= -->
+<!-- ========================= Journey ========================= -->
 <section class="sec">
   <div data-reveal>
-    <span class="sec__eyebrow sec__eyebrow--block">From the studio</span>
+    <span class="sec__eyebrow sec__eyebrow--block">Where you are</span>
     <hr class="sec__rule">
-    <h1 class="sec__title">Notes on shipping AI systems.</h1>
-    <p class="sec__lead">Short, practical write-ups on agentic AI, automation and the engineering decisions behind what we ship — from the team building it.</p>
+    <h1 class="sec__title" style="margin-bottom:30px">Pick the path that fits — we'll meet you there.</h1>
+  </div>
+
+  <div class="stack" data-reveal data-reveal-delay="2">
+    <div class="chips" id="journeyChips" role="tablist" aria-label="Where you are">
+      <button type="button" class="chip chip--plain" role="tab" aria-pressed="true" aria-selected="true" data-index="0">I have an AI idea</button>
+      <button type="button" class="chip chip--plain" role="tab" aria-pressed="false" aria-selected="false" data-index="1">Scaling a model</button>
+      <button type="button" class="chip chip--plain" role="tab" aria-pressed="false" aria-selected="false" data-index="2">Adding AI to a product</button>
+      <button type="button" class="chip chip--plain" role="tab" aria-pressed="false" aria-selected="false" data-index="3">It isn’t shipping</button>
+    </div>
+
+    <div class="blueprint edge-bleed panel">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div class="panel__grid panel__grid--wide">
+        <div class="panel__body--roomy panel__body--edge">
+          <h3 class="panel__name panel__name--journey" id="journeyTitle">From idea to a working prototype in weeks</h3>
+          <p class="panel__copy panel__copy--roomy" id="journeyBody">You have the use case and the buy-in. We scope tightly, choose the right model and architecture, and put a working prototype in your hands fast.</p>
+          <a class="btn btn-primary panel__cta" id="journeyCta" href="index.html#contact">Start with discovery</a>
+        </div>
+        <div class="panel__body--roomy" style="display:flex;flex-direction:column;gap:0">
+          <span class="panel__subhead panel__subhead--plain">How we work it</span>
+          <div id="journeySteps">
+            <div class="numstep"><span class="numstep__n">1</span><span class="numstep__t">Discovery workshop — surface the data, metric and constraints</span></div>
+            <div class="numstep"><span class="numstep__n">2</span><span class="numstep__t">Architecture decision doc — model, infra, eval strategy</span></div>
+            <div class="numstep"><span class="numstep__n">3</span><span class="numstep__t">Working prototype on real data, measured against your metric</span></div>
+            <div class="numstep"><span class="numstep__n">4</span><span class="numstep__t">A roadmap to production with dates you can defend</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ========================= Post grid ========================= -->
+<!-- ========================= Closing CTA ========================= -->
 <section class="sec sec--tight">
-  <div class="blog__grid" data-reveal data-reveal-delay="1">
-    <article class="blueprint blogcard">
-      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-      <span class="blogcard__tag">Agentic AI</span>
-      <h2 class="blogcard__title">What actually breaks when you put an agent in production</h2>
-      <p class="blogcard__excerpt">The demo always works. Here's what fails once real data, real users and real latency show up — and the guardrails that catch it before your customer does.</p>
-      <div class="blogcard__meta"><span>Coming soon</span></div>
-    </article>
-
-    <article class="blueprint blogcard">
-      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-      <span class="blogcard__tag">Automation</span>
-      <h2 class="blogcard__title">The workflow audit we run before we automate anything</h2>
-      <p class="blogcard__excerpt">Not every repetitive task should be automated as-is. The checklist we use to decide what to fix first, what to remove, and only then what to wire up.</p>
-      <div class="blogcard__meta"><span>Coming soon</span></div>
-    </article>
-
-    <article class="blueprint blogcard">
-      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-      <span class="blogcard__tag">Engineering</span>
-      <h2 class="blogcard__title">Evals are the thing nobody budgets time for</h2>
-      <p class="blogcard__excerpt">Everyone plans the build. Almost nobody plans how they'll know it's working. A practical starting point for evaluating an LLM feature before it ships.</p>
-      <div class="blogcard__meta"><span>Coming soon</span></div>
-    </article>
-
-    <article class="blueprint blogcard">
-      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-      <span class="blogcard__tag">Product</span>
-      <h2 class="blogcard__title">Scoping a fixed-price AI project without the scope creep</h2>
-      <p class="blogcard__excerpt">How we write a spec that holds up once the build starts — and what we push back on when a "quick addition" shows up mid-sprint.</p>
-      <div class="blogcard__meta"><span>Coming soon</span></div>
-    </article>
+  <div class="hero__ctas" data-reveal>
+    <a class="btn btn-primary" href="index.html#contact">Book a call</a>
+    <a class="btn btn-ghost" href="index.html">Back to home</a>
   </div>
-
-  <p class="blog__note">New posts are on the way. In the meantime, <a href="index.html#contact">book a call</a> or follow along on <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a> and <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>.</p>
 </section>
 
 </main>

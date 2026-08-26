@@ -194,11 +194,15 @@ a:hover { color: var(--color-accent-200); }
   padding-inline: var(--edge);
 }
 .nav-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--color-bg);
   text-decoration: none;
 }
+.nav-brand__mark { display: block; width: 32px; height: 32px; object-fit: contain; }
 .nav__link { white-space: nowrap; color: var(--color-bg); }
 .nav__cta { text-decoration: none; white-space: nowrap; }
 
@@ -575,6 +579,48 @@ a:hover { color: var(--color-accent-200); }
 }
 
 /* --------------------------------------------------------------------------
+   7b. Trust bar
+   -------------------------------------------------------------------------- */
+
+.trustbar { padding: 30px var(--edge) 6px; text-align: center; }
+.trustbar__label {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: color-mix(in srgb, var(--color-text) 52%, transparent);
+  margin-bottom: 22px;
+}
+.trustbar__viewport {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.trustbar__track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  gap: clamp(36px, 5vw, 64px);
+  animation: marqueeX 26s linear infinite;
+}
+.trustbar__logo {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  padding: 0 4px;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 15px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: color-mix(in srgb, var(--color-text) 40%, transparent);
+}
+
+/* --------------------------------------------------------------------------
    8. Section chrome
    -------------------------------------------------------------------------- */
 
@@ -641,6 +687,17 @@ a:hover { color: var(--color-accent-200); }
   margin-top: clamp(28px, 4vw, 40px);
 }
 .about__grid .tick strong { color: var(--color-text); }
+
+/* --------------------------------------------------------------------------
+   8c. Products
+   -------------------------------------------------------------------------- */
+
+.products__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: clamp(20px, 3vw, 32px);
+  margin-top: clamp(28px, 4vw, 40px);
+}
 
 /* --------------------------------------------------------------------------
    9. Chips (services, industries, journeys)
