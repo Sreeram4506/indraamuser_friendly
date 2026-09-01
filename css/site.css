@@ -252,6 +252,7 @@ a:hover { color: var(--color-accent-200); }
   letter-spacing: 0.03em;
 }
 .nav__drawer .btn { margin: 10px var(--edge) 6px; }
+.nav__drawer-rule { border: 0; border-top: 1px solid var(--color-divider); margin: 6px var(--edge); }
 
 /* Desktop links / mobile toggle swap at 820px — mirrors the prototype's
    isMobile breakpoint. */
@@ -582,43 +583,74 @@ a:hover { color: var(--color-accent-200); }
    7b. Trust bar
    -------------------------------------------------------------------------- */
 
-.trustbar { padding: 30px var(--edge) 6px; text-align: center; }
+.trustbar { padding: clamp(48px, 6vw, 80px) var(--edge); }
+.trustbar__panel {
+  text-align: center;
+  padding: clamp(40px, 6vw, 64px) clamp(20px, 4vw, 48px) clamp(44px, 6vw, 68px);
+  background:
+    radial-gradient(120% 160% at 50% 0%, color-mix(in srgb, var(--color-accent) 16%, transparent) 0%, transparent 65%),
+    var(--color-neutral-900);
+}
 .trustbar__label {
   display: block;
-  font-size: 12px;
-  letter-spacing: 0.14em;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: clamp(22px, 3.4vw, 32px);
+  letter-spacing: 0.02em;
   text-transform: uppercase;
-  font-weight: 600;
-  color: color-mix(in srgb, var(--color-text) 52%, transparent);
-  margin-bottom: 22px;
+  color: var(--color-bg);
 }
-.trustbar__viewport {
-  overflow: hidden;
-  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+.trustbar__rule {
+  width: 64px;
+  height: 2px;
+  margin: 20px auto clamp(32px, 4vw, 44px);
+  border: 0;
+  background: var(--color-accent);
 }
-.trustbar__track {
+.trustbar__grid {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  width: max-content;
-  gap: clamp(36px, 5vw, 64px);
-  animation: marqueeX 26s linear infinite;
+  justify-content: center;
+  gap: clamp(24px, 3vw, 40px);
 }
 .trustbar__logo {
   flex: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 32px;
-  padding: 0 4px;
-  font-family: var(--font-heading);
-  font-weight: var(--font-heading-weight);
-  font-size: 15px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  color: color-mix(in srgb, var(--color-text) 40%, transparent);
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
 }
+.trustbar__logo--card {
+  height: 68px;
+  width: 168px;
+  padding: 12px 20px;
+  background: var(--color-bg);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  box-sizing: border-box;
+}
+.trustbar__logo--card img {
+  display: block;
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+.trustbar__logo--card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-accent);
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--color-accent) 28%, transparent);
+}
+.trustbar__logo--plain { height: 52px; width: 168px; }
+.trustbar__logo--plain img {
+  display: block;
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+.trustbar__logo--plain:hover { transform: translateY(-4px); }
 
 /* --------------------------------------------------------------------------
    8. Section chrome
@@ -681,11 +713,12 @@ a:hover { color: var(--color-accent-200); }
    -------------------------------------------------------------------------- */
 
 .about__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
-  gap: 4px clamp(24px, 4vw, 48px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px clamp(24px, 4vw, 48px);
   margin-top: clamp(28px, 4vw, 40px);
 }
+.about__grid > .tick { flex: 0 1 340px; }
 .about__grid .tick strong { color: var(--color-text); }
 
 /* --------------------------------------------------------------------------
@@ -697,6 +730,95 @@ a:hover { color: var(--color-accent-200); }
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
   gap: clamp(20px, 3vw, 32px);
   margin-top: clamp(28px, 4vw, 40px);
+}
+
+.product-video {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  background:
+    radial-gradient(120% 140% at 50% 15%, color-mix(in srgb, var(--color-accent) 20%, transparent) 0%, transparent 70%),
+    var(--color-neutral-900);
+  border-bottom: 1px solid var(--color-divider);
+  overflow: hidden;
+}
+.product-video::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--color-bg) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--color-bg) 6%, transparent) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+.product-video__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .2s ease, background .2s ease;
+}
+.product-video__play svg { margin-left: 3px; }
+.product-video__label {
+  position: absolute;
+  left: 16px;
+  bottom: 14px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: color-mix(in srgb, var(--color-bg) 82%, transparent);
+}
+a.product-video:hover .product-video__play,
+a.product-video:focus-visible .product-video__play {
+  transform: translate(-50%, -50%) scale(1.08);
+  background: var(--color-accent-600);
+}
+.product-video--disabled { cursor: default; }
+.product-video--disabled .product-video__play { background: color-mix(in srgb, var(--color-accent) 55%, transparent); }
+.product-video__media {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--color-neutral-900);
+}
+.product-video__preview {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.feature-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 380px));
+  gap: 28px clamp(24px, 4vw, 48px);
+  margin-top: clamp(20px, 3vw, 28px);
+}
+.feature-list__item { padding-top: 18px; border-top: 1px solid var(--color-divider); }
+.feature-list__title {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 17px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--color-bg);
+  margin: 0 0 8px;
+}
+.feature-list__body {
+  font-size: 14px;
+  line-height: 22px;
+  margin: 0;
+  color: color-mix(in srgb, var(--color-text) 76%, transparent);
 }
 
 /* --------------------------------------------------------------------------
@@ -743,6 +865,8 @@ a:hover { color: var(--color-accent-200); }
 .chip[aria-pressed="true"] .chip__dot { background: var(--color-neutral-900); }
 .chip--wide { letter-spacing: 0.04em; }
 .chip--plain { padding: 11px 18px; }
+.chip--static { cursor: default; }
+.chip--static:hover { border-color: var(--color-divider); }
 
 /* --------------------------------------------------------------------------
    10. Switching panels
@@ -1310,9 +1434,9 @@ a:hover { color: var(--color-accent-200); }
 }
 .foot__top {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: flex-start;
-  gap: clamp(48px, 10vw, 160px);
+  gap: clamp(32px, 6vw, 96px);
   flex-wrap: wrap;
   padding-bottom: 32px;
   border-bottom: 1px solid var(--color-divider);
