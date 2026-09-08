@@ -1476,7 +1476,15 @@ a.product-video:focus-visible .product-video__play {
 }
 .foot__col a { color: inherit; text-decoration: none; }
 .foot__col a:hover { color: var(--color-accent); }
-.foot__bottom { padding-top: 20px; }
+.foot__bottom {
+  padding-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  justify-content: space-between;
+}
+.foot__legal a { color: inherit; text-decoration: none; }
+.foot__legal a:hover { color: var(--color-accent); }
 
 @media (max-width: 680px) {
   .foot__top { gap: 32px; }
@@ -1528,3 +1536,50 @@ a.product-video:focus-visible .product-video__play {
   line-height: 22px;
   color: color-mix(in srgb, var(--color-text) 68%, transparent);
 }
+
+/* --------------------------------------------------------------------------
+   18. Legal documents
+   -------------------------------------------------------------------------- */
+
+.legal { max-width: 720px; }
+.legal__updated {
+  font-size: 13px;
+  color: color-mix(in srgb, var(--color-text) 55%, transparent);
+  margin: 0 0 clamp(28px, 4vw, 40px);
+}
+.legal__note {
+  padding: 16px 20px;
+  margin: 0 0 clamp(28px, 4vw, 40px);
+  border: 1px solid var(--color-divider);
+  border-left: 3px solid var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 6%, transparent);
+  font-size: 14px;
+  line-height: 22px;
+  color: color-mix(in srgb, var(--color-text) 82%, transparent);
+}
+.legal__note strong { color: var(--color-bg); }
+.legal h2 {
+  font-size: clamp(19px, 2.4vw, 22px);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin: 40px 0 14px;
+}
+.legal h2:first-of-type { margin-top: 0; }
+.legal h3 {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-accent-300);
+  margin: 22px 0 10px;
+}
+.legal p, .legal li {
+  font-size: 15px;
+  line-height: 26px;
+  color: color-mix(in srgb, var(--color-text) 82%, transparent);
+}
+.legal p { margin: 0 0 16px; }
+.legal ul { margin: 0 0 16px; padding-left: 22px; }
+.legal li { margin-bottom: 8px; }
+.legal li::marker { color: var(--color-accent-300); }
+.legal strong { color: var(--color-bg); }
+.legal a { text-decoration: underline; }
