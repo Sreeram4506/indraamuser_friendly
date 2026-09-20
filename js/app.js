@@ -692,29 +692,6 @@
   })();
 
   /* ==================================================================
-     EmailJS — best-effort extra notification for the contact form.
-     The /api/contact backend already persists every lead to the admin
-     dashboard regardless, so a failure here is logged and swallowed
-     rather than shown to the visitor.
-     ================================================================== */
-
-  function sendWithEmailJs(formType, templateParams) {
-    var cfg = window.INDRAAM_EMAILJS_CONFIG;
-    var formCfg = cfg && cfg[formType];
-    if (!cfg || !formCfg || !cfg.publicKey || !formCfg.serviceId || !formCfg.templateId || typeof emailjs === 'undefined') {
-      return;
-    }
-    try {
-      emailjs.init(cfg.publicKey);
-      emailjs.send(formCfg.serviceId, formCfg.templateId, templateParams).catch(function (err) {
-        console.error('EmailJS send failed:', err);
-      });
-    } catch (err) {
-      console.error('EmailJS init failed:', err);
-    }
-  }
-
-  /* ==================================================================
      Contact form
      ================================================================== */
 
@@ -753,16 +730,6 @@
           return;
         }
       }
-
-      sendWithEmailJs('contact', {
-        form_type: 'Indraam Contact Form',
-        submitted_at: new Date().toLocaleString(),
-        name: name,
-        email: email,
-        subject: 'New message from indraam.com',
-        message: note || 'No additional notes provided.',
-        reply_to: email
-      });
 
       form.classList.add('u-hidden');
       done.classList.remove('u-hidden');
