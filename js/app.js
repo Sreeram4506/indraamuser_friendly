@@ -51,59 +51,59 @@
 
   var SERVICES = [
     {
-      name: 'Agentic AI', tag: 'Autonomous systems',
-      what: 'Agents that read your data, decide, and take action across your tools — the ring at the center reasons, the nodes are the systems it drives. Every step runs behind guardrails and an audit trail.',
-      deliver: ['Multi-step agents wired to your APIs, CRM and inbox', 'Guardrails, evals and human sign-off gates', 'A decision audit log for every action taken']
+      name: 'AI Assistants', tag: 'Works on its own',
+      what: 'A smart assistant that looks at your information, makes a decision, and takes the next step for you — no one has to babysit it. Every action it takes is checked and written down, so you always know what happened and why.',
+      deliver: ['An assistant connected to your inbox, tools and customer records', 'Safety checks — and a human approval step where it matters', 'A clear record of every action it takes']
     },
     {
-      name: 'Automation', tag: 'Workflow pipelines',
-      what: 'The repetitive work mapped, then removed — watch a task flow through trigger, route, process and log without a person touching it. CRM, ops and back-office flows, handled.',
-      deliver: ['Trigger → route → process → log pipelines', 'Exception handling with escalation rules', 'Full run logs and status dashboards']
+      name: 'Automation', tag: 'Runs by itself',
+      what: 'We find the repetitive, everyday tasks your team keeps doing by hand and make them happen automatically. Something comes in, the right thing gets done, and it gets logged — no person needed.',
+      deliver: ['Repetitive tasks handled start to finish, automatically', 'Problems get flagged and sent to the right person', 'A simple dashboard showing what ran and what happened']
     },
     {
-      name: 'Web & mobile', tag: 'Full-stack build',
-      what: 'Full product engineering on a modern stack — the frame assembles the UI, the API and the data layer, block by block. React, Node, Python, your cloud, handed over clean.',
-      deliver: ['Web and mobile apps on your stack', 'API and data layer built to scale', 'Clean handover: code, docs, infra']
+      name: 'Websites & Apps', tag: 'Built to last',
+      what: "We design and build your website or app from the ground up — everything you see, and everything working behind the scenes to make it run. Built to grow as your business does, and it's fully yours when we hand it over.",
+      deliver: ['A website or app that works on desktop and mobile', 'A solid setup that can handle more users and data over time', 'Everything handed over clean — the code, instructions and access']
     },
     {
-      name: 'Product & UI/UX', tag: 'Design to ship',
-      what: 'Interfaces designed like instruments — watch a wireframe resolve into a shipped, hi-fi product. Fast, legible, and measured against how people actually use them.',
-      deliver: ['Wireframes → hi-fi design system', 'Prototypes tested against real tasks', 'Production-ready, componentized front end']
+      name: 'Design', tag: 'Easy to use',
+      what: 'We design how your product looks and feels — starting as a simple sketch and turning it into a finished, polished design. Fast to use, easy to understand, and tested with real people doing real tasks.',
+      deliver: ['A rough sketch turned into a full, ready-to-build design', 'Designs tested with real people before anything gets built', 'A finished look and feel, ready to hand to development']
     },
     {
-      name: 'Voice & chat', tag: 'Conversational agents',
-      what: 'Low-latency voice and RAG-grounded chat — the mic listens, the waveform responds, the reply lands. Persona, tone and evals, shipped into customer-facing production.',
-      deliver: ['Voice agents that book, re-book and answer', 'RAG chat grounded in your knowledge base', 'Persona, tone and safety evals']
+      name: 'Voice & Chat', tag: 'Talks to your customers',
+      what: 'A phone or chat assistant that answers your customers right away — it listens, understands what they need, and replies in a tone that sounds like your business, not a robot.',
+      deliver: ['A phone or chat assistant that books, reschedules and answers questions', 'Answers based on your own information — not generic guesses', 'Tested for accuracy and tone before it ever talks to a customer']
     },
     {
-      name: 'Data & analytics', tag: 'The foundation',
-      what: 'The plumbing under the AI — the scan line reads your sources, the bars are live throughput. Multi-source ingest, warehouse modeling and self-updating dashboards.',
-      deliver: ['Multi-source ingest and warehouse modeling', 'Self-updating operational dashboards', 'AI-ready, clean data foundation']
+      name: 'Data & Reports', tag: 'Everything in one place',
+      what: "We pull your information together from wherever it lives, clean it up, and turn it into simple dashboards and reports that update on their own — so you always know what's going on without digging for it.",
+      deliver: ['All your information brought together in one place', 'Dashboards and reports that update automatically', 'Clean, organized data that anything you build next can use']
     }
   ];
 
   var INDUSTRIES = [
-    { name: 'Healthcare', tag: 'HIPAA-aware', body: 'Clinical and operational software where privacy and audit trails are non-negotiable — built to survive a compliance review, not just a demo.', plays: ['Intake, scheduling and no-show automation', 'RAG assistants grounded in your protocols', 'HIPAA-aware data pipelines and dashboards'] },
-    { name: 'Finance', tag: 'Auditable', body: 'Decision systems with every step logged. Agents that reconcile, flag and draft — with a human sign-off gate wherever money moves.', plays: ['Reconciliation and exception routing', 'Document extraction from statements and forms', 'Reporting that writes its own commentary'] },
-    { name: 'Retail & ecommerce', tag: 'Revenue-facing', body: 'From competitor-price intelligence to support deflection — AI wired into merchandising and the customer conversation.', plays: ['Competitor pricing and assortment intel', 'Product-question chat trained on your catalog', 'Returns and refund triage'] },
-    { name: 'Logistics', tag: 'Operational', body: 'The back office that keeps freight moving — orders, exceptions and status chase handled before a human is needed.', plays: ['Order and exception automation', 'Track-and-trace status agents', 'Carrier and invoice reconciliation'] },
-    { name: 'PropTech', tag: 'Document-heavy', body: 'Leases, listings and maintenance turned from PDF piles into structured, queryable, action-ready data.', plays: ['Lease and document extraction', 'Listing generation on your tone', 'Maintenance-request triage and routing'] },
-    { name: 'EdTech', tag: 'Content-scale', body: 'Academic operations at scale — question papers, dashboards and one warehouse behind fragmented systems.', plays: ['Question-paper and content generation', 'PowerBI / Fabric operational dashboards', 'Unified academic data warehouse'] },
-    { name: 'Manufacturing', tag: 'Edge + cloud', body: 'Vision and data systems on the floor — quality QA at the line, and the pipelines that turn machine data into decisions.', plays: ['Vision QA at the line', 'Downtime and yield analytics', 'Maintenance and supply-chain automation'] },
-    { name: 'Travel', tag: 'Customer-facing', body: 'The itinerary, the inbox and the front desk — voice and chat agents that book, re-book and answer around the clock.', plays: ['Booking and re-booking voice agents', 'Multilingual support chat', 'Itinerary and ops automation'] }
+    { name: 'Healthcare', tag: 'Keeps patient data private', body: 'Software for clinics and care teams where privacy and careful record-keeping really matter — built to pass a real compliance check, not just look good in a demo.', plays: ['Automatic appointment booking and no-show reminders', 'A chat assistant trained on your own procedures, so answers stay accurate', 'Dashboards and record-keeping that follow healthcare privacy rules'] },
+    { name: 'Finance', tag: 'Every step logged', body: 'Tools that track every decision they make. Assistants that double-check numbers, flag anything unusual, and draft reports — with a person signing off wherever money moves.', plays: ['Automatic bookkeeping checks and error flagging', 'Pulling the key details out of statements and forms', 'Reports that write their own plain-English summary'] },
+    { name: 'Retail & ecommerce', tag: 'Drives more sales', body: 'From watching competitor prices to answering customer questions instantly — AI built into how you sell and how you talk to customers.', plays: ['Tracking competitor prices and product selection automatically', 'A chat assistant that answers product questions using your own catalog', 'Faster handling of returns and refunds'] },
+    { name: 'Logistics', tag: 'Keeps shipments moving', body: 'The behind-the-scenes work that keeps freight moving — orders, hiccups and status updates handled before anyone has to chase them down.', plays: ['Automatic order handling and exception alerts', 'Assistants that track shipments and answer "where is it" questions', 'Matching carrier invoices to what was actually shipped'] },
+    { name: 'PropTech', tag: 'Handles the paperwork', body: 'Leases, listings and maintenance requests turned from stacks of PDFs into organized, searchable information you can actually use.', plays: ['Pulling key details out of leases and documents automatically', 'Generating property listings in your own voice', 'Sorting and routing maintenance requests to the right person'] },
+    { name: 'EdTech', tag: 'Scales with more students', body: 'Academic operations that keep up as you grow — question papers, dashboards, and one clear picture instead of scattered spreadsheets and systems.', plays: ['Generating question papers and course content automatically', 'Easy-to-read dashboards for school or college operations', 'One combined view of all your academic data'] },
+    { name: 'Manufacturing', tag: 'Watches the line', body: 'Camera and sensor-based tools on the factory floor — automatic quality checks on the line, and clear reports turning machine data into decisions.', plays: ['Automatic visual quality checks on the production line', 'Reports on downtime and output', 'Automated alerts for maintenance and supply needs'] },
+    { name: 'Travel', tag: 'Available around the clock', body: 'The booking, the inbox and the front desk — voice and chat assistants that book, reschedule and answer questions any time of day.', plays: ['Voice assistants that book and reschedule trips', 'Support chat that works in multiple languages', 'Automatic itinerary updates and back-office tasks'] }
   ];
 
   var JOURNEYS = [
-    { title: 'From idea to a working prototype in weeks', body: 'You have the use case and the buy-in. We scope tightly, choose the right model and architecture, and put a working prototype in your hands fast.', cta: 'Start with discovery', steps: ['Discovery workshop — surface the data, metric and constraints', 'Architecture decision doc — model, infra, eval strategy', 'Working prototype on real data, measured against your metric', 'A roadmap to production with dates you can defend'] },
-    { title: 'Take a proof-of-concept to production scale', body: 'It works in the notebook — now it needs to survive real load, real data and real users. We harden, evaluate and deploy it properly.', cta: 'Scope the scale-up', steps: ['Audit the current model, data and failure modes', 'Add evals, guardrails and monitoring', 'Re-architect serving for latency and cost', 'Roll out behind flags and measure against SLOs'] },
-    { title: 'Ship an AI feature without breaking what works', body: 'You have a product and users. We slot AI in as a feature — designed, evaluated and reversible — not a risky rewrite.', cta: 'Plan the feature', steps: ['Map the highest-leverage feature and its guardrails', 'Prototype inside your existing stack', 'A/B and eval before it reaches everyone', 'Instrument, document and hand over'] },
-    { title: 'Unblock a stalled AI project and get it live', body: 'The demo impressed, then it stalled. We find what’s actually blocking it — data, evals, infra or scope — and get it to production.', cta: 'Get unblocked', steps: ['Rapid diagnostic on what’s blocking release', 'Cut scope to a shippable v1', 'Fix the eval, data or infra gap', 'Ship, measure, then extend'] }
+    { title: 'From idea to a working prototype in weeks', body: "You already know what you want to build and have the go-ahead. We keep the scope tight, pick the right approach, and put a working version in your hands fast.", cta: 'Start with discovery', steps: ['A discovery session to nail down what it needs to do and any limits we\'re working within', 'A short written plan covering our approach and what we\'ll test for', 'A working version built on real data, checked against what you actually need', 'A clear roadmap to full launch, with dates you can count on'] },
+    { title: 'Take a working idea and make it production-ready', body: "It works as a demo — now it needs to hold up with real traffic, real data and real customers. We strengthen it, test it thoroughly, and launch it properly.", cta: 'Scope the scale-up', steps: ['Review what you have now and find where it could break', 'Add testing, safety checks and ongoing monitoring', 'Rebuild the parts that need to be faster or handle more load', 'Roll it out gradually and track how well it performs'] },
+    { title: 'Add an AI feature without breaking what already works', body: 'You have a product and real users already. We add AI as one feature at a time — designed, tested, and easy to undo — not a risky overhaul of everything.', cta: 'Plan the feature', steps: ['Find the one feature that would help the most, and plan around it safely', 'Build a working version inside your existing product', 'Test it with a small group before rolling it out to everyone', 'Document everything and hand it over clean'] },
+    { title: 'Get a stalled AI project moving again', body: "The demo looked great, then progress stopped. We find out what's actually holding it back — the data, the testing, the setup, or just too much scope — and get it launched.", cta: 'Get unblocked', steps: ['A quick review to find exactly what\'s blocking the launch', 'Trim the scope down to a version we can ship now', 'Fix whatever gap is actually holding it back', 'Launch it, measure the results, then keep improving it'] }
   ];
 
   var CHAT_SCRIPT = [
-    { q: 'Do you build AI chatbots for customer support?', a: 'Yes — RAG-grounded chat and voice agents, trained on your own docs and shipped with guardrails. Most go live in about two weeks.' },
-    { q: 'Can you automate our invoice and email workflows?', a: 'That’s our automation service: trigger → route → process → log, no human in the loop. We map it in discovery, then build it.' },
-    { q: 'What does a project cost, and who owns the code?', a: 'Fixed-scope builds are priced from the spec — and you own all code, docs and infra on handover. Book a call and we’ll scope yours.' }
+    { q: 'Do you build AI chatbots for customer support?', a: 'Yes — chat and voice assistants trained on your own documents, with safety checks built in. Most go live in about two weeks.' },
+    { q: 'Can you automate our invoice and email workflows?', a: "That's our automation service: something comes in, gets handled, and gets logged — no person needed. We map it out during discovery, then build it." },
+    { q: 'What does a project cost, and who owns the code?', a: 'Fixed-scope builds are priced from a written plan — and you own all the code, docs and setup once we hand it over. Book a call and we\'ll scope yours.' }
   ];
 
   var OFFLINE_REPLY = 'I’m offline right now — but a human isn’t. Use "Book a call" above and the team will answer directly.';
