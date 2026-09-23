@@ -34,6 +34,7 @@ a:hover { color: var(--color-accent-200); }
 }
 
 .u-hidden { display: none !important; }
+.u-no-scroll { overflow: hidden; }
 .u-vh {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
   overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
@@ -557,6 +558,57 @@ a:hover { color: var(--color-accent-200); }
 }
 .chatcard__demo:hover { background: color-mix(in srgb, var(--color-accent) 16%, transparent); }
 .chatcard__demo .pip { width: 6px; height: 6px; }
+
+.chatcard__close {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  flex: none;
+  border: none;
+  border-left: 1px solid var(--color-divider);
+  background: transparent;
+  color: var(--color-bg);
+  cursor: pointer;
+}
+
+.chat-fab {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-accent);
+  cursor: pointer;
+  z-index: 60;
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--color-neutral-900) 45%, transparent);
+  animation: riseIn .5s cubic-bezier(.22, .7, .25, 1) both;
+}
+.chat-fab:hover { background: var(--color-accent-300); }
+
+@media (max-width: 819px) {
+  .chatcard { display: none; }
+  .chatcard.is-open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    inset: 0;
+    margin: 0;
+    z-index: 70;
+    animation: none;
+  }
+  .chatcard.is-open .corner { display: none; }
+  .chatcard.is-open .chatcard__log { flex: 1; height: auto; }
+  .chatcard__close { display: flex; }
+  .chat-fab { display: flex; }
+}
 
 /* --------------------------------------------------------------------------
    7. Marquee

@@ -444,6 +444,36 @@
   })();
 
   /* ==================================================================
+     Hero chat — mobile icon
+     Below the mobile breakpoint the chat card is hidden by default and
+     opens full-screen from a floating icon, so it doesn't dominate the
+     hero on a small screen.
+     ================================================================== */
+
+  (function chatFab() {
+    var fab = $('#chatFab');
+    var card = $('#heroChatCard');
+    var closeBtn = $('#chatClose');
+    if (!fab || !card) return;
+
+    function setOpen(open) {
+      card.classList.toggle('is-open', open);
+      fab.classList.toggle('u-hidden', open);
+      fab.setAttribute('aria-expanded', open ? 'true' : 'false');
+      document.documentElement.classList.toggle('u-no-scroll', open);
+    }
+
+    fab.addEventListener('click', function () { setOpen(true); });
+    if (closeBtn) closeBtn.addEventListener('click', function () { setOpen(false); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && card.classList.contains('is-open')) setOpen(false);
+    });
+    var onBreakpoint = function (e) { if (!e.matches) setOpen(false); };
+    if (MOBILE_Q.addEventListener) MOBILE_Q.addEventListener('change', onBreakpoint);
+    else if (MOBILE_Q.addListener) MOBILE_Q.addListener(onBreakpoint);
+  })();
+
+  /* ==================================================================
      Services — chips, auto-advance, panel swap
      ================================================================== */
 
