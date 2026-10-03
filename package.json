@@ -8,7 +8,7 @@
     "start": "node dev-server.js",
     "dev:netlify": "netlify dev",
     "secret": "node -e \"console.log(require('crypto').randomBytes(32).toString('hex'))\"",
-    "check": "node -e \"['js/app.js','js/admin.js','api/_lib/core.js','api/_lib/openai.js','api/_lib/guard.js','api/_lib/netlify.js','api/_lib/db.js','api/_lib/auth.js','api/agent.js','api/gaps.js','api/contact.js','api/admin/login.js','api/admin/data.js','api/admin/export.js'].forEach(f=>require('child_process').execSync('node --check '+JSON.stringify(f)));console.log('syntax OK')\""
+    "check": "node -e \"['js/app.js','js/admin.js','js/marketing.js','api/_lib/core.js','api/_lib/openai.js','api/_lib/guard.js','api/_lib/netlify.js','api/_lib/db.js','api/_lib/auth.js','api/agent.js','api/gaps.js','api/contact.js','api/admin/login.js','api/admin/data.js','api/admin/export.js'].forEach(f=>require('child_process').execSync('node --check '+JSON.stringify(f)));console.log('syntax OK')\""
   },
   "dependencies": {
     "dotenv": "^17.4.2",

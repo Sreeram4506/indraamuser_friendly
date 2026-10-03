@@ -133,14 +133,71 @@ async function runGaps(body, headers) {
 
 const EMAIL = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 
+/* Digital Marketing consultation form: extra structured fields on top of
+   name / email / note. Everything is length-capped and stringly typed. */
+function cleanLead(raw) {
+  if (!raw || typeof raw !== 'object') return null;
+  const a = raw.attribution && typeof raw.attribution === 'object' ? raw.attribution : {};
+  return {
+    company: str(raw.company, 160),
+    phone: str(raw.phone, 40),
+    website: str(raw.website, 300),
+    location: str(raw.location, 160),
+    preferredTeam: str(raw.preferredTeam, 40),
+    services: Array.isArray(raw.services) ? raw.services.map((s) => str(s, 60)).filter(Boolean).slice(0, 20) : [],
+    budget: str(raw.budget, 60),
+    goal: str(raw.goal, 80),
+    attribution: {
+      landingPage: str(a.landingPage, 300),
+      referrer: str(a.referrer, 300),
+      page: str(a.page, 300),
+      utmSource: str(a.utmSource, 120),
+      utmMedium: str(a.utmMedium, 120),
+      utmCampaign: str(a.utmCampaign, 160),
+      utmContent: str(a.utmContent, 160),
+      utmTerm: str(a.utmTerm, 160),
+    },
+  };
+}
+
+function leadSummary(lead, message, submittedAt) {
+  const a = lead.attribution;
+  const rows = [
+    ['Company', lead.company], ['Phone', lead.phone], ['Website', lead.website],
+    ['Location', lead.location], ['Preferred team', lead.preferredTeam],
+    ['Services', lead.services.join(', ')], ['Monthly budget', lead.budget], ['Main goal', lead.goal],
+  ].filter((r) => r[1]).map((r) => `${r[0]}: ${r[1]}`);
+  const attr = [
+    ['Landing page', a.landingPage], ['Form page', a.page], ['Referrer', a.referrer],
+    ['UTM source', a.utmSource], ['UTM medium', a.utmMedium], ['UTM campaign', a.utmCampaign],
+    ['UTM content', a.utmContent], ['UTM term', a.utmTerm],
+  ].filter((r) => r[1]).map((r) => `${r[0]}: ${r[1]}`);
+  return [
+    'Digital Marketing consultation request',
+    ...rows,
+    message ? `\n${message}` : '',
+    attr.length ? `\n— Attribution —\n${attr.join('\n')}` : '',
+    `Submitted: ${submittedAt}`,
+  ].filter(Boolean).join('\n').slice(0, 6000);
+}
+
 async function runContact(body, headers) {
   const name = str(body && body.name, 120);
   const email = str(body && body.email, 200);
-  const note = str(body && body.note, 4000);
   const sessionId = str(body && body.sessionId, 64) || null;
+
+  // Honeypot: real visitors never see this field, bots fill it in. Answer as
+  // if it worked so the bot gets no signal, and store nothing.
+  if (str(body && body.hp, 200)) return { status: 200, payload: { ok: true, delivered: false } };
 
   if (!name) return { status: 400, payload: { error: 'name is required' } };
   if (!EMAIL.test(email)) return { status: 400, payload: { error: 'a valid email is required' } };
+
+  const lead = cleanLead(body && body.lead);
+  const submittedAt = new Date().toISOString();
+  const message = str(body && body.note, 4000);
+  const note = lead ? leadSummary(lead, message, submittedAt) : message;
+  const source = lead ? 'indraam.com/digital-marketing' : 'indraam.com';
 
   const hook = process.env.CONTACT_WEBHOOK_URL;
   let delivered = false;
@@ -150,7 +207,7 @@ async function runContact(body, headers) {
       const res = await fetch(hook, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, note, source: 'indraam.com', at: new Date().toISOString() }),
+        body: JSON.stringify({ name, email, note, lead, source, at: submittedAt }),
       });
       if (!res.ok) throw new Error(`webhook ${res.status}`);
       delivered = true;
@@ -161,10 +218,10 @@ async function runContact(body, headers) {
 
   // The submission is persisted whether or not the webhook fired, so a broken
   // hook loses a notification, never the lead. It shows up in /admin either way.
-  await logContact({ sessionId, name, email, note, delivered, headers });
+  await logContact({ sessionId, name, email, note, lead, source, delivered, headers });
 
   if (!hook) {
-    console.log('[indraam contact]', JSON.stringify({ name, email, at: new Date().toISOString() }));
+    console.log('[indraam contact]', JSON.stringify({ name, email, source, at: submittedAt }));
   }
   return { status: 200, payload: { ok: true, delivered } };
 }

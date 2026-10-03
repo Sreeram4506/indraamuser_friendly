@@ -138,13 +138,15 @@ function logGapRun({ sessionId, description, gaps, ok, error, headers }) {
   );
 }
 
-function logContact({ sessionId, name, email, note, delivered, headers }) {
+function logContact({ sessionId, name, email, note, lead, source, delivered, headers }) {
   return safeWrite('contact', async (db) =>
     db.collection(COLLECTIONS.contacts).insertOne({
       sessionId: sessionId || null,
       name,
       email,
       note,
+      lead: lead || null,
+      source: source || 'indraam.com',
       delivered: Boolean(delivered),
       status: 'new', // new | read | replied | archived
       createdAt: new Date(),

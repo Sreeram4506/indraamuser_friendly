@@ -259,11 +259,13 @@ a:hover { color: var(--color-accent-200); }
    isMobile breakpoint. */
 .nav__links { display: contents; }
 .nav__toggle { display: none; }
-@media (max-width: 819px) {
+/* 12 links + a dropdown need more room than the old 820px cut-off allowed;
+   the hamburger takes over below 1060px. (Other 819px rules are unrelated.) */
+@media (max-width: 1059px) {
   .nav__links { display: none; }
   .nav__toggle { display: flex; }
 }
-@media (min-width: 820px) {
+@media (min-width: 1060px) {
   .nav__drawer { display: none !important; }
 }
 
@@ -1635,3 +1637,152 @@ a.product-video:focus-visible .product-video__play {
 .legal li::marker { color: var(--color-accent-300); }
 .legal strong { color: var(--color-bg); }
 .legal a { text-decoration: underline; }
+
+/* --------------------------------------------------------------------------
+   19. Digital Marketing entry points — nav dropdown, footer column, home banner
+   -------------------------------------------------------------------------- */
+
+.nav__dd { position: relative; display: flex; align-items: center; align-self: stretch; }
+.nav__link--dd { display: inline-flex; align-items: center; gap: 6px; }
+.nav__chev { opacity: 0.7; transition: transform .2s ease; }
+.nav__dd:hover .nav__chev, .nav__dd:focus-within .nav__chev { transform: rotate(180deg); }
+
+.nav__dd-panel {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: min(800px, calc(100vw - 2 * var(--edge)));
+  padding-top: 10px;
+  transform: translate(-50%, 6px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .18s ease, transform .18s ease, visibility 0s linear .18s;
+  z-index: 70;
+}
+.nav__dd:hover .nav__dd-panel,
+.nav__dd:focus-within .nav__dd-panel {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+  transition-delay: 0s;
+}
+.nav__dd-box {
+  background: var(--color-neutral-900);
+  border: 1px solid var(--color-divider);
+  box-shadow: 0 24px 48px color-mix(in srgb, #000 45%, transparent);
+  padding: 22px 26px 18px;
+}
+.nav__dd-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px 28px; }
+.nav__dd-group { display: flex; flex-direction: column; gap: 2px; }
+.nav__dd-head {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent-300);
+  margin-bottom: 4px;
+}
+.nav__dd-group a {
+  padding: 6px 0;
+  font-size: 14px;
+  color: color-mix(in srgb, var(--color-bg) 84%, transparent);
+}
+.nav__dd-group a:hover { color: var(--color-accent-300); }
+.nav__dd-all {
+  display: block;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--color-divider);
+  font-weight: 600;
+  color: var(--color-accent-300);
+}
+.nav__dd-all:hover { color: var(--color-accent-200); }
+
+.foot__col--wide { display: block; columns: 2; column-gap: 36px; }
+.foot__col--wide .foot__heading { column-span: all; display: block; margin-bottom: 12px; }
+.foot__col--wide a { display: block; break-inside: avoid; margin-bottom: 10px; }
+
+.dm-banner { padding: clamp(36px, 5vw, 72px) var(--edge) 0; }
+.dm-banner__panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: clamp(28px, 5vw, 72px);
+  align-items: center;
+  padding: clamp(26px, 4.5vw, 60px);
+  background:
+    radial-gradient(90% 120% at 100% 0%, color-mix(in srgb, var(--color-accent) 22%, transparent) 0%, transparent 60%),
+    var(--color-accent-900);
+}
+.dm-banner__title {
+  font-size: clamp(30px, 4.6vw, 52px);
+  line-height: 1.02;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  margin: 12px 0 16px;
+  max-width: 14ch;
+}
+.dm-banner__lead {
+  font-size: 16px;
+  line-height: 26px;
+  margin: 0;
+  max-width: 50ch;
+  color: color-mix(in srgb, var(--color-bg) 80%, transparent);
+}
+.dm-banner__panel .hero__ctas { animation: none; margin-top: 28px; }
+.dm-banner__flow { list-style: none; margin: 0; padding: 0; }
+.dm-banner__flow li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 16px;
+  padding-bottom: 22px;
+}
+.dm-banner__flow li:last-child { padding-bottom: 0; }
+.dm-banner__flow li::before {
+  content: "";
+  position: absolute;
+  left: 16.5px;
+  top: 36px;
+  bottom: 2px;
+  width: 1px;
+  background: color-mix(in srgb, var(--color-accent-300) 45%, transparent);
+}
+.dm-banner__flow li:last-child::before { display: none; }
+.dm-banner__node {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--color-accent);
+  background: var(--color-accent-900);
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--color-accent-300);
+}
+.dm-banner__flow strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 17px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-bg);
+  margin-bottom: 2px;
+}
+.dm-banner__flow span:not(.dm-banner__node) {
+  font-size: 13px;
+  line-height: 20px;
+  color: color-mix(in srgb, var(--color-bg) 68%, transparent);
+}
+@media (max-width: 819px) {
+  .dm-banner__panel { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 680px) {
+  /* edge-to-edge panel: brackets would poke out past the viewport */
+  .dm-banner__panel > .corner { display: none; }
+}

@@ -41,6 +41,69 @@
     }
   })();
 
+  /* Analytics events. Vendor-neutral: uses gtag() if a GA4 snippet is on the
+     page, otherwise pushes to window.dataLayer for Google Tag Manager. With
+     neither installed this is a no-op and nothing leaves the browser. */
+  var track = function (name, params) {
+    params = params || {};
+    params.page_path = location.pathname;
+    try {
+      if (typeof window.gtag === 'function') window.gtag('event', name, params);
+      else (window.dataLayer = window.dataLayer || []).push(Object.assign({ event: name }, params));
+    } catch (err) { /* analytics must never break the page */ }
+  };
+  window.indraamTrack = track;
+
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('a, button');
+    if (!el) return;
+    var ev = el.getAttribute('data-track');
+    var href = el.getAttribute('href') || '';
+    var label = (el.textContent || '').trim().slice(0, 80);
+    if (ev) track(ev, { location: el.getAttribute('data-location') || '', label: label });
+    else if (/^tel:/i.test(href)) track('phone_click', { label: label });
+    else if (/^mailto:/i.test(href)) track('email_click', { label: label });
+    else if (/wa\.me|whatsapp\.com/i.test(href)) track('whatsapp_click', { label: label });
+  });
+
+  (function viewEvents() {
+    var ev = document.body && document.body.getAttribute('data-track-view');
+    if (ev) track(ev);
+    var cases = $$('[data-case-study]');
+    if (cases.length && 'IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (!en.isIntersecting) return;
+          io.unobserve(en.target);
+          track('case_study_view', { case_study: en.target.getAttribute('data-case-study') });
+        });
+      }, { threshold: 0.5 });
+      cases.forEach(function (c) { io.observe(c); });
+    }
+  })();
+
+  /* First-touch attribution for the tab: where the visit started and any UTM
+     tags. Kept in sessionStorage only and sent solely if the visitor submits
+     the consultation form. */
+  (function attribution() {
+    try {
+      var k = 'indraam.attr';
+      if (sessionStorage.getItem(k)) return;
+      var q = new URLSearchParams(location.search);
+      var ref = '';
+      try { ref = document.referrer ? new URL(document.referrer).origin + new URL(document.referrer).pathname : ''; } catch (e) { ref = ''; }
+      sessionStorage.setItem(k, JSON.stringify({
+        landingPage: location.pathname,
+        referrer: ref,
+        utmSource: q.get('utm_source') || '',
+        utmMedium: q.get('utm_medium') || '',
+        utmCampaign: q.get('utm_campaign') || '',
+        utmContent: q.get('utm_content') || '',
+        utmTerm: q.get('utm_term') || ''
+      }));
+    } catch (err) { /* storage blocked — attribution just degrades */ }
+  })();
+
   var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var MOTION = !REDUCED;
   var MOBILE_Q = window.matchMedia('(max-width: 819px)');
@@ -275,9 +338,10 @@
     $$('a', drawer).forEach(function (a) {
       a.addEventListener('click', function () { setOpen(false); });
     });
+    var NAV_Q = window.matchMedia('(max-width: 1059px)');
     var onBreakpoint = function (e) { if (!e.matches) setOpen(false); };
-    if (MOBILE_Q.addEventListener) MOBILE_Q.addEventListener('change', onBreakpoint);
-    else if (MOBILE_Q.addListener) MOBILE_Q.addListener(onBreakpoint);
+    if (NAV_Q.addEventListener) NAV_Q.addEventListener('change', onBreakpoint);
+    else if (NAV_Q.addListener) NAV_Q.addListener(onBreakpoint);
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
   })();
 

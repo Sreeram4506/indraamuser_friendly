@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /digital-marketing/thank-you/
+
+Sitemap: https://indraam.com/sitemap.xml

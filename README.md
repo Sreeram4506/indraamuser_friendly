@@ -159,6 +159,38 @@ lose that log line. The public site never depends on the database being up.
 Contact submissions are persisted whether or not `CONTACT_WEBHOOK_URL` fires, so a broken
 webhook costs you a notification, never a lead.
 
+## Digital Marketing division
+
+Lives at `/digital-marketing/` (`digital-marketing/index.html`) with its own stylesheet
+(`css/marketing.css`) and script (`js/marketing.js`), on the same design system as the rest of the
+site. Each service has an anchor on that page (`#seo`, `#local-seo`, `#ai-search`, `#google-ads`,
+`#meta-ads`, `#social`, `#content`, `#video`, `#branding`, `#automation`) which the nav dropdown and
+footer link to. Separate service pages are the next phase.
+
+**Consultation form** → `POST /api/contact` with a `lead` object (company, phone, website, location,
+preferred team, services, budget, goal, attribution). The server builds a readable multi-line `note`
+from it, so the admin dashboard and CSV export show every field with no changes, and forwards the
+structured `lead` to `CONTACT_WEBHOOK_URL` if set. A hidden `hp` field is a honeypot: when filled, the
+request is acknowledged but nothing is stored. On success the visitor is sent to
+`/digital-marketing/thank-you/`.
+
+**Analytics.** `js/app.js` exposes `window.indraamTrack(name, params)`. It calls `gtag()` if a GA4
+snippet is on the page, otherwise pushes to `window.dataLayer` for Google Tag Manager; with neither
+installed it does nothing and no data leaves the browser. Events: `consultation_cta_click`,
+`contact_cta_click`, `phone_click`, `email_click`, `whatsapp_click`, `form_start`, `form_submit`,
+`service_page_visit`, `case_study_view` (add `data-case-study="name"` to a card), and `generate_lead`.
+`generate_lead` is the conversion: it fires only on the thank-you page, and only right after a real,
+accepted submission (a flag set in `sessionStorage` is consumed on load), so visiting the URL directly
+or refreshing never counts. Mark it as a key event in GA4 / import it into Google Ads. To turn tracking
+on, add your GA4 or GTM snippet to the `<head>` of the pages; no IDs are committed here.
+
+**Attribution.** First page, referrer and UTM tags are held in `sessionStorage` for the tab and sent
+only with a form submission (disclosed in the Privacy Policy).
+
+**Not built yet:** a CMS for editing page content, CRM sync, and an automatic confirmation email to the
+person who submits. The internal notification works through `CONTACT_WEBHOOK_URL` (point it at a
+Zapier / Make / Slack / email-sending webhook).
+
 ## Deploying to Netlify instead
 
 `netlify.toml` and `netlify/functions/*.mjs` cover the three public routes — same `/api/*`
