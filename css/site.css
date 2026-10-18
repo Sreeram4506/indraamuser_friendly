@@ -1547,53 +1547,7 @@ a.product-video:focus-visible .product-video__play {
 }
 
 /* --------------------------------------------------------------------------
-   17. Blog page
-   -------------------------------------------------------------------------- */
-
-.blog__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-  gap: clamp(20px, 3vw, 32px);
-}
-.blogcard {
-  padding: clamp(22px, 3vw, 30px);
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-.blogcard__tag {
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: var(--color-accent-300);
-}
-.blogcard__title { font-size: 19px; line-height: 26px; letter-spacing: 0.01em; margin: 0; }
-.blogcard__excerpt {
-  font-size: 14px;
-  line-height: 22px;
-  margin: 0;
-  flex: 1;
-  color: color-mix(in srgb, var(--color-text) 72%, transparent);
-}
-.blogcard__meta {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12px;
-  color: color-mix(in srgb, var(--color-text) 55%, transparent);
-  padding-top: 12px;
-  border-top: 1px solid var(--color-divider);
-}
-.blog__note {
-  margin: clamp(32px, 4vw, 48px) 0 0;
-  font-size: 14px;
-  line-height: 22px;
-  color: color-mix(in srgb, var(--color-text) 68%, transparent);
-}
-
-/* --------------------------------------------------------------------------
-   18. Legal documents
+   17. Legal documents
    -------------------------------------------------------------------------- */
 
 .legal { max-width: 720px; }
@@ -1844,3 +1798,39 @@ a.product-video:focus-visible .product-video__play {
 @keyframes dm-switch-nudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(5px); } }
 @media (prefers-reduced-motion: reduce) { .dm-switch, .dm-switch__arrow { animation: none; } }
 @media (max-width: 600px) { .dm-switch { width: 100%; justify-content: center; } }
+
+/* --------------------------------------------------------------------------
+   7e. Offices & Locations
+   -------------------------------------------------------------------------- */
+
+.offices { position: relative; }
+.offices__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 28px; }
+.offices__card {
+  padding: 30px 26px;
+  border: 1px solid var(--color-divider);
+  background: var(--color-surface);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+  transition: border-color .25s ease, transform .25s ease;
+}
+.offices__card:hover { border-color: var(--color-accent); transform: translateY(-4px); }
+.offices__top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.offices__tag { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-accent-300); font-weight: 600; }
+.offices__city { margin: 6px 0 0; font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(26px, 3vw, 34px); letter-spacing: .02em; text-transform: uppercase; color: var(--color-text); }
+.offices__region { margin: 0; font-size: 15px; color: color-mix(in srgb, var(--color-text) 78%, transparent); }
+.offices__role { margin: 10px 0 16px; font-size: 14px; line-height: 22px; color: color-mix(in srgb, var(--color-text) 62%, transparent); }
+.offices__link {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: gap .15s ease, color .15s ease;
+}
+.offices__link:hover { color: var(--color-accent-300); gap: 9px; text-decoration: none; }
+@media (max-width: 860px) { .offices__grid { grid-template-columns: minmax(0, 1fr); } }
