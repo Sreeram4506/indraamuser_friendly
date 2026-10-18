@@ -670,6 +670,7 @@ a:hover { color: var(--color-accent-200); }
 }
 .trustbar__logo {
   flex: none;
+  text-decoration: none;
   display: flex;
   align-items: center;
   justify-content: center;
