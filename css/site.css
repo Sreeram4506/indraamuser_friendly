@@ -1806,3 +1806,41 @@ a.product-video:focus-visible .product-video__play {
 .svcov__link:hover { text-decoration: underline; }
 @media (max-width: 860px) { .svcov__grid { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 440px) { .svcov__list { grid-template-columns: minmax(0, 1fr); } }
+
+/* --------------------------------------------------------------------------
+   7d. Home -> Digital Marketing switch button (made hard to miss)
+   -------------------------------------------------------------------------- */
+
+.dm-banner__pill {
+  display: inline-block;
+  padding: 6px 14px;
+  font-family: var(--font-heading);
+  font-size: 13px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--color-accent-900);
+  background: var(--color-accent-300);
+}
+.dm-switch {
+  gap: 12px;
+  padding: 18px 34px;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  color: var(--color-accent-900);
+  background: var(--color-accent-300);
+  border-color: var(--color-accent-300);
+  box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-accent-300) 60%, transparent);
+  animation: dm-switch-pulse 2.4s ease-out infinite;
+}
+.dm-switch:hover { background: var(--color-bg); border-color: var(--color-bg); animation: none; }
+.dm-switch__arrow { display: inline-block; font-size: 22px; line-height: 1; transition: transform .25s ease; animation: dm-switch-nudge 1.6s ease-in-out infinite; }
+.dm-switch:hover .dm-switch__arrow { transform: translateX(6px); animation: none; }
+@keyframes dm-switch-pulse {
+  0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-accent-300) 55%, transparent); }
+  70%  { box-shadow: 0 0 0 16px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+@keyframes dm-switch-nudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(5px); } }
+@media (prefers-reduced-motion: reduce) { .dm-switch, .dm-switch__arrow { animation: none; } }
+@media (max-width: 600px) { .dm-switch { width: 100%; justify-content: center; } }
