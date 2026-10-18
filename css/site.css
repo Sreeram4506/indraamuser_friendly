@@ -1786,3 +1786,22 @@ a.product-video:focus-visible .product-video__play {
   /* edge-to-edge panel: brackets would poke out past the viewport */
   .dm-banner__panel > .corner { display: none; }
 }
+
+/* --------------------------------------------------------------------------
+   7c. Services overview (shared by home and digital marketing pages)
+   -------------------------------------------------------------------------- */
+
+.svcov { padding: 0 var(--edge) clamp(48px, 6vw, 80px); }
+.svcov__title { max-width: 26ch; }
+.svcov__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 28px; }
+.svcov__card { padding: 28px 26px 26px; border: 1px solid var(--color-divider); background: var(--color-surface); }
+.svcov__h { margin: 0 0 18px; font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(20px, 2.4vw, 26px); letter-spacing: .02em; text-transform: uppercase; color: var(--color-text); }
+.svcov__list { list-style: none; margin: 0 0 20px; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 18px; }
+.svcov__list li { display: grid; gap: 2px; padding-left: 14px; position: relative; }
+.svcov__list li::before { content: ""; position: absolute; left: 0; top: 7px; width: 5px; height: 5px; background: var(--color-accent); }
+.svcov__list strong { font-size: 15px; line-height: 20px; color: var(--color-text); }
+.svcov__list span { font-size: 13px; line-height: 18px; color: color-mix(in srgb, var(--color-text) 62%, transparent); }
+.svcov__link { font-weight: 600; font-size: 14px; color: var(--color-accent); text-decoration: none; }
+.svcov__link:hover { text-decoration: underline; }
+@media (max-width: 860px) { .svcov__grid { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 440px) { .svcov__list { grid-template-columns: minmax(0, 1fr); } }
