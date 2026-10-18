@@ -86,6 +86,11 @@ app.get('/admin', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'admin.html'));
 });
 
+// Redirect /blog and /blog.html → /
+app.get(['/blog', '/blog.html'], (req, res) => {
+  res.redirect(301, '/');
+});
+
 // Serve everything else as static files
 app.use(express.static(__dirname, {
   index: 'index.html',

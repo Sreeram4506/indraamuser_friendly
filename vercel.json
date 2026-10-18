@@ -3,6 +3,9 @@
   "rewrites": [
     { "source": "/admin", "destination": "/admin.html" }
   ],
+  "redirects": [
+    { "source": "/blog(.*)", "destination": "/", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/(.*)",
