@@ -21,6 +21,12 @@
     X-Frame-Options = "SAMEORIGIN"
  
 [[redirects]]
+  from = "https://indraam.com/*"
+  to = "https://www.indraam.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/blog*"
   to = "/"
   status = 301

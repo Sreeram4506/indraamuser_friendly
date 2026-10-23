@@ -4,6 +4,7 @@
     { "source": "/admin", "destination": "/admin.html" }
   ],
   "redirects": [
+    { "source": "/(.*)", "has": [{ "type": "host", "value": "indraam.com" }], "destination": "https://www.indraam.com/$1", "permanent": true },
     { "source": "/blog(.*)", "destination": "/", "permanent": true }
   ],
   "headers": [

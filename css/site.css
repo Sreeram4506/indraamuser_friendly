@@ -1834,3 +1834,24 @@ a.product-video:focus-visible .product-video__play {
 }
 .offices__link:hover { color: var(--color-accent-300); gap: 9px; text-decoration: none; }
 @media (max-width: 860px) { .offices__grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* --------------------------------------------------------------------------
+   7f. Heading tags that keep the look of the label/badge they replaced
+   -------------------------------------------------------------------------- */
+
+h1.hero__badge { font-family: var(--font-body); font-weight: 400; font-size: inherit; line-height: normal; letter-spacing: normal; }
+h1.hero__badge span:last-child { white-space: normal; }
+h1.sec__eyebrow, h2.panel__subhead { font-family: var(--font-body); }
+h2.panel__subhead { line-height: 1.5; }
+
+/* --------------------------------------------------------------------------
+   7g. Inline "read more" link rows and linked headings
+   -------------------------------------------------------------------------- */
+
+.svc-more { margin: 18px 0 0; font-size: 15px; color: color-mix(in srgb, var(--color-text) 72%, transparent); }
+.svc-more a, .svcov__list strong a, .panel__name a { color: inherit; text-decoration: none; }
+.svc-more a { color: var(--color-accent-300); text-decoration: underline; text-underline-offset: 3px; }
+.svcov__list strong a:hover, .panel__name a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.static-content[hidden] { display: none; }
+
+.trustbar__logo picture { display: contents; }

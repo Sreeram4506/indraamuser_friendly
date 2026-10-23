@@ -4,4 +4,4 @@ Disallow: /admin
 Disallow: /api/
 Disallow: /digital-marketing/thank-you/
 
-Sitemap: https://indraam.com/sitemap.xml
+Sitemap: https://www.indraam.com/sitemap.xml
