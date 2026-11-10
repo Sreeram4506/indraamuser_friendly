@@ -355,3 +355,33 @@
   .toolbar__search, .toolbar__status { max-width: none; width: 100%; }
   .toolbar__spacer { display: none; }
 }
+
+/* --------------------------------------------------------------------------
+   Certificates page
+   -------------------------------------------------------------------------- */
+
+.cert-gate__text { margin: 0 0 18px; font-size: 15px; line-height: 24px; color: color-mix(in srgb, var(--color-bg) 76%, transparent); }
+
+.cert-panel { padding: clamp(20px, 3vw, 32px); margin-bottom: 22px; }
+.cert-panel__title { font-size: 24px; text-transform: uppercase; letter-spacing: .02em; margin: 0 0 8px; }
+.cert-panel__help { margin: 0 0 20px; max-width: 78ch; font-size: 14px; line-height: 22px; color: color-mix(in srgb, var(--color-bg) 68%, transparent); }
+.cert-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px 16px; }
+.cert-form__f { display: block; min-width: 0; }
+.cert-form__f .input { width: 100%; box-sizing: border-box; }
+.cert-form__f--wide { grid-column: 1 / -1; }
+.cert-form__err, .cert-form__actions { grid-column: 1 / -1; }
+.cert-form__actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+.cert-rec { display: grid; grid-template-columns: 148px minmax(0, 1fr); gap: 18px; align-items: start; }
+.cert-rec__qr { width: 148px; height: 148px; background: #fff; padding: 6px; box-sizing: border-box; display: block; }
+.cert-rec__id { font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; font-size: 13px; letter-spacing: .06em; color: var(--color-accent-300); margin: 2px 0 0; overflow-wrap: anywhere; }
+.cert-rec__sub { margin: 4px 0 0; font-size: 14px; color: color-mix(in srgb, var(--color-bg) 72%, transparent); }
+.cert-rec__facts { margin: 8px 0 0; font-size: 13px; color: color-mix(in srgb, var(--color-bg) 58%, transparent); }
+.cert-rec__actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+.cert-rec__actions .btn, .cert-rec__actions .statusbtn { min-height: 36px; padding: 6px 12px; font-size: 13px; text-decoration: none; display: inline-flex; align-items: center; }
+.cert-rec__actions input[type="file"] { display: none; }
+.pill--valid { background: color-mix(in srgb, #2f8f5b 28%, transparent); color: #9fe0bc; }
+.pill--revoked { background: color-mix(in srgb, #b5483c 30%, transparent); color: #f1b2a9; }
+.pill--nofile { background: color-mix(in srgb, var(--color-accent) 24%, transparent); color: var(--color-accent-300); }
+
+@media (max-width: 560px) { .cert-rec { grid-template-columns: 1fr; } .cert-rec__qr { width: 132px; height: 132px; } }

@@ -21,6 +21,10 @@ const PORT = Number(process.env.PORT || 3000);
    Middleware
    -------------------------------------------------------------------------- */
 
+// Certificate uploads carry a base64 file (up to 3 MB), so this route gets a bigger limit.
+// It must come first: the first parser to run consumes the body.
+app.use('/api/admin/certificates', express.json({ limit: '6mb' }));
+
 // Parse JSON bodies for API routes
 app.use('/api', express.json({ limit: '100kb' }));
 
@@ -44,7 +48,7 @@ app.use((req, res, next) => {
   res.setHeader('X-Content-Type-Options', 'nosniff');
   res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
   res.setHeader('X-Frame-Options', 'SAMEORIGIN');
-  if (req.path.startsWith('/admin') || req.path.startsWith('/api/admin/')) {
+  if (req.path.startsWith('/admin') || req.path.startsWith('/api/admin/') || req.path.startsWith('/verify') || req.path.startsWith('/api/verify')) {
     res.setHeader('X-Robots-Tag', 'noindex, nofollow');
     res.setHeader('Cache-Control', 'no-store');
   }
@@ -76,6 +80,10 @@ mountApi('/api/contact', 'api/contact.js');
 mountApi('/api/admin/login', 'api/admin/login.js');
 mountApi('/api/admin/data', 'api/admin/data.js');
 mountApi('/api/admin/export', 'api/admin/export.js');
+mountApi('/api/admin/certificates', 'api/admin/certificates.js');
+
+// Public certificate verification (the QR code on a certificate points here)
+mountApi('/api/verify', 'api/verify.js');
 
 /* --------------------------------------------------------------------------
    Static file serving
@@ -84,6 +92,11 @@ mountApi('/api/admin/export', 'api/admin/export.js');
 // Rewrite /admin → /admin.html
 app.get('/admin', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'admin.html'));
+});
+
+// /verify and /verify/<id> → the public certificate verification page
+app.get(['/verify', '/verify/:id'], (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'verify.html'));
 });
 
 // Redirect /blog and /blog.html → /

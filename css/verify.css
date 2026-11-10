@@ -1,0 +1,46 @@
+/* Public certificate verification page. Built on the site's design tokens. */
+
+.verify { background: var(--color-neutral-900); color: var(--color-bg); min-height: 100vh; display: flex; flex-direction: column; }
+
+.vbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px var(--edge, 24px); border-bottom: 1px solid color-mix(in srgb, var(--color-bg) 14%, transparent); }
+.vbar .nav-brand { color: var(--color-bg); }
+.vbar__link { font-size: 14px; color: color-mix(in srgb, var(--color-bg) 72%, transparent); text-decoration: none; }
+.vbar__link:hover { color: var(--color-accent-300); }
+
+.vmain { width: 100%; max-width: 760px; margin: 0 auto; padding: clamp(36px, 7vw, 72px) 20px 48px; flex: 1; box-sizing: border-box; }
+.vtitle { font-size: clamp(34px, 6vw, 54px); line-height: 1.04; text-transform: uppercase; letter-spacing: .01em; margin: 10px 0 14px; color: var(--color-bg); }
+.vlead { font-size: 16px; line-height: 26px; margin: 0 0 28px; max-width: 56ch; color: color-mix(in srgb, var(--color-bg) 76%, transparent); }
+
+.vform { margin-bottom: 28px; }
+.vform__label { display: block; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 8px; color: color-mix(in srgb, var(--color-bg) 62%, transparent); }
+.vform__row { display: flex; gap: 10px; flex-wrap: wrap; }
+.vform__row .input { flex: 1 1 240px; min-width: 0; font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; letter-spacing: .06em; text-transform: uppercase; }
+
+.vcard { position: relative; border: 1px solid color-mix(in srgb, var(--color-bg) 18%, transparent); padding: clamp(22px, 4vw, 36px); background: color-mix(in srgb, var(--color-bg) 4%, transparent); }
+.vcard__status { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; }
+.vcard__icon { flex: none; width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; font-size: 26px; line-height: 1; font-weight: 700; }
+.vcard--valid .vcard__icon { background: #2f8f5b; color: #fff; }
+.vcard--revoked .vcard__icon, .vcard--missing .vcard__icon { background: #b5483c; color: #fff; }
+.vcard--error .vcard__icon { background: var(--color-accent); color: #fff; }
+.vcard__headline { font-family: var(--font-heading); font-size: clamp(24px, 4vw, 32px); line-height: 1.08; text-transform: uppercase; margin: 0; color: var(--color-bg); }
+.vcard__sub { margin: 4px 0 0; font-size: 14px; color: color-mix(in srgb, var(--color-bg) 68%, transparent); }
+
+.vdl { display: grid; grid-template-columns: max-content 1fr; gap: 12px 24px; margin: 0; }
+.vdl dt { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: color-mix(in srgb, var(--color-bg) 56%, transparent); align-self: center; }
+.vdl dd { margin: 0; font-size: 17px; color: var(--color-bg); overflow-wrap: anywhere; }
+.vdl dd.vname { font-family: var(--font-heading); font-size: 26px; text-transform: uppercase; letter-spacing: .02em; }
+.vdl dd.vmono { font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; letter-spacing: .06em; font-size: 15px; }
+
+.vcert { margin-top: 28px; padding-top: 24px; border-top: 1px solid color-mix(in srgb, var(--color-bg) 16%, transparent); }
+.vcert__label { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; margin: 0 0 12px; color: color-mix(in srgb, var(--color-bg) 56%, transparent); }
+.vcert__img { display: block; width: 100%; height: auto; border: 1px solid color-mix(in srgb, var(--color-bg) 18%, transparent); background: #fff; }
+.vcert__pdf { width: 100%; height: min(78vh, 720px); border: 1px solid color-mix(in srgb, var(--color-bg) 18%, transparent); background: #fff; }
+.vcert__actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+.vcert__note { margin: 0; font-size: 14px; color: color-mix(in srgb, var(--color-bg) 68%, transparent); }
+
+.vloading { color: color-mix(in srgb, var(--color-bg) 68%, transparent); }
+
+.vfoot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; padding: 18px var(--edge, 24px); border-top: 1px solid color-mix(in srgb, var(--color-bg) 14%, transparent); font-size: 13px; color: color-mix(in srgb, var(--color-bg) 56%, transparent); }
+.vnoscript { padding: 20px; text-align: center; color: var(--color-accent-300); }
+
+@media (max-width: 520px) { .vdl { grid-template-columns: 1fr; gap: 2px 0; } .vdl dt { margin-top: 12px; } }

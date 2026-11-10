@@ -19,6 +19,8 @@ const COLLECTIONS = {
   chats: 'chats',        // one doc per conversation, messages appended
   gaps: 'gap_runs',      // one doc per gap-finder run
   contacts: 'contacts',  // one doc per form submission
+  certificates: 'certificates',          // one doc per issued certificate (public-safe fields + admin notes)
+  certificateFiles: 'certificate_files', // the uploaded certificate file, kept apart so list queries stay light
 };
 
 /* Cache across warm invocations. */
@@ -59,6 +61,9 @@ async function ensureIndexes(db) {
     db.collection(COLLECTIONS.gaps).createIndex({ createdAt: -1 }),
     db.collection(COLLECTIONS.contacts).createIndex({ createdAt: -1 }),
     db.collection(COLLECTIONS.contacts).createIndex({ status: 1, createdAt: -1 }),
+    db.collection(COLLECTIONS.certificates).createIndex({ certId: 1 }, { unique: true }),
+    db.collection(COLLECTIONS.certificates).createIndex({ createdAt: -1 }),
+    db.collection(COLLECTIONS.certificateFiles).createIndex({ certId: 1 }, { unique: true }),
   ]);
 }
 

@@ -191,6 +191,35 @@ only with a form submission (disclosed in the Privacy Policy).
 person who submits. The internal notification works through `CONTACT_WEBHOOK_URL` (point it at a
 Zapier / Make / Slack / email-sending webhook).
 
+## Certificate verification
+
+Issue a certificate to an intern, put a QR code on it, and anyone who scans the QR code lands on
+`indraam.com/verify` and sees the certificate and whether it is genuine.
+
+**Issuing one** (needs `MONGODB_URI`, `ADMIN_PASSWORD` and `SESSION_SECRET`, like the rest of the admin):
+
+1. Sign in at `/admin`, then open **Certificates** in the top bar (`/admin-certificates.html`).
+2. Enter the intern's name and program, and create it. That produces a certificate ID such as `IND-2026-K7M3Q9XA`
+   and a QR code that points at `https://www.indraam.com/verify?id=IND-2026-K7M3Q9XA`.
+3. Download the QR code (PNG, or SVG for print) and place it on your certificate design.
+4. Export the finished certificate (PNG, JPG or PDF, up to 3 MB) and **Upload certificate** on that record.
+   Until you do, scanning shows the confirmed details without a picture.
+
+Because the QR code only carries the ID, you can upload or replace the file at any time without reprinting.
+**Revoke** makes the verify page say the certificate is no longer valid (and hides the file). **Delete** removes it
+and its QR code stops working.
+
+**What the public sees:** name, program, dates, issue date, ID, and the certificate file. The email and
+internal note you enter are admin-only and never leave the database through `/api/verify`.
+IDs are random (about 40 bits), the lookup is rate-limited, and the pages are `noindex`, so certificates are
+not listed or guessable. Anyone who has the ID or QR code can view that one certificate.
+
+Files: `api/admin/certificates.js` (admin API), `api/verify.js` (public API), `api/_lib/certs.js`,
+`verify.html` + `js/verify.js` + `css/verify.css` (public page), `admin-certificates.html` + `js/admin-certificates.js`.
+Records live in the `certificates` and `certificate_files` collections. On Vercel, `/verify` is rewritten to
+`verify.html` in `vercel.json`. This feature is Vercel/local only; the Netlify functions folder has no admin or
+verify endpoints.
+
 ## Deploying to Netlify instead
 
 `netlify.toml` and `netlify/functions/*.mjs` cover the three public routes — same `/api/*`

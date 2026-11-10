@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Verify a Certificate | Indraam</title>
+<meta name="description" content="Check that an Indraam certificate is genuine by scanning its QR code or entering its certificate ID.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#2b2b2d">
+<link rel="icon" href="/assets/logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700&family=Barlow+Condensed:wght@400;600&display=swap">
+<link rel="stylesheet" href="/css/design-system.css">
+<link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/verify.css">
+</head>
+<body class="verify">
+
+<header class="vbar">
+  <a class="nav-brand" href="/"><img class="nav-brand__mark" src="/assets/logo.png" alt="" width="32" height="32">Indraam</a>
+  <a class="vbar__link" href="/">Back to indraam.com</a>
+</header>
+
+<main class="vmain" id="top">
+  <span class="sec__eyebrow">Certificate verification</span>
+  <h1 class="vtitle">Verify a certificate</h1>
+  <p class="vlead">Scan the QR code on an Indraam certificate, or type its certificate ID below, to confirm that it is genuine.</p>
+
+  <form class="vform" id="vForm" novalidate>
+    <label class="vform__label" for="vId">Certificate ID</label>
+    <div class="vform__row">
+      <input class="input" id="vId" name="id" type="text" inputmode="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="IND-2026-XXXXXXXX" maxlength="24">
+      <button class="btn btn-primary" type="submit" id="vGo">Verify</button>
+    </div>
+  </form>
+
+  <div class="vresult" id="vResult" aria-live="polite"></div>
+</main>
+
+<footer class="vfoot">
+  <span>© 2026 Indraam · indraam.com</span>
+  <span>Only certificates issued by Indraam can be verified here.</span>
+</footer>
+
+<noscript><p class="vnoscript">Certificate verification needs JavaScript. Please enable it and reload this page.</p></noscript>
+<script src="/js/verify.js"></script>
+</body>
+</html>

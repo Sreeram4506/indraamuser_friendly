@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Indraam — Certificates</title>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<link rel="icon" href="assets/logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="css/design-system.css">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin">
+
+<!-- Not signed in -->
+<div class="login" id="gateView" hidden>
+  <div class="blueprint login__card">
+    <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    <div class="login__brand">Indraam</div>
+    <div class="login__eyebrow">Certificates · admin</div>
+    <p class="cert-gate__text" id="gateText">Sign in on the admin page first, then come back here.</p>
+    <a class="btn btn-primary login__submit" href="admin.html" style="text-align:center;text-decoration:none">Go to admin sign-in</a>
+  </div>
+</div>
+
+<div id="appView" hidden>
+  <header class="adminbar">
+    <span class="nav-brand">Indraam</span>
+    <span class="adminbar__tag">Certificates</span>
+    <div class="adminbar__spacer"></div>
+    <a class="adminbar__link" href="admin.html">Dashboard</a>
+    <a class="adminbar__link" href="verify" target="_blank" rel="noopener">Public verify page</a>
+  </header>
+
+  <main class="adminmain">
+
+    <section class="cert-panel blueprint" aria-labelledby="newTitle">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <h2 class="cert-panel__title" id="newTitle">Issue a new certificate</h2>
+      <p class="cert-panel__help">1. Fill in the details and create it. 2. Download the QR code and place it on your certificate design. 3. Export the finished certificate (PNG, JPG or PDF) and upload it here, so people who scan the QR see it.</p>
+
+      <form class="cert-form" id="certForm" novalidate>
+        <label class="cert-form__f"><span class="contact__label">Full name *</span><input class="input" id="fName" maxlength="120" required autocomplete="off"></label>
+        <label class="cert-form__f"><span class="contact__label">Program / role *</span><input class="input" id="fProgram" maxlength="160" required placeholder="e.g. Web Development Intern" autocomplete="off"></label>
+        <label class="cert-form__f"><span class="contact__label">Start date</span><input class="input" id="fStart" type="date"></label>
+        <label class="cert-form__f"><span class="contact__label">End date</span><input class="input" id="fEnd" type="date"></label>
+        <label class="cert-form__f"><span class="contact__label">Issued on</span><input class="input" id="fIssued" type="date"></label>
+        <label class="cert-form__f"><span class="contact__label">Email (private, optional)</span><input class="input" id="fEmail" type="email" maxlength="200" autocomplete="off"></label>
+        <label class="cert-form__f cert-form__f--wide"><span class="contact__label">Internal note (private, optional)</span><input class="input" id="fNote" maxlength="500" autocomplete="off"></label>
+        <p class="login__err u-hidden cert-form__err" id="formErr" role="alert"></p>
+        <div class="cert-form__actions"><button class="btn btn-primary" type="submit" id="formGo">Create certificate and QR code</button></div>
+      </form>
+    </section>
+
+    <p class="notice u-hidden" id="notice" role="status"></p>
+
+    <div class="toolbar">
+      <input class="input toolbar__search" id="search" type="search" placeholder="Search name, program or ID…" aria-label="Search certificates">
+      <div class="toolbar__spacer"></div>
+      <span class="pager__label" id="countLabel"></span>
+      <button type="button" class="btn btn-secondary" id="refreshBtn">Refresh</button>
+    </div>
+
+    <div class="records" id="records" aria-live="polite"></div>
+
+    <div class="pager u-hidden" id="pager">
+      <button type="button" class="btn btn-secondary" id="prevBtn">← Newer</button>
+      <span class="pager__label" id="pagerLabel"></span>
+      <button type="button" class="btn btn-secondary" id="nextBtn">Older →</button>
+    </div>
+  </main>
+</div>
+
+<script src="js/admin-certificates.js"></script>
+</body>
+</html>
