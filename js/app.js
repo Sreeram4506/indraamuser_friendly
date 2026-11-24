@@ -142,6 +142,11 @@
       name: 'Data & Reports', tag: 'Everything in one place',
       what: "We pull your information together from wherever it lives, clean it up, and turn it into simple dashboards and reports that update on their own — so you always know what's going on without digging for it.",
       deliver: ['All your information brought together in one place', 'Dashboards and reports that update automatically', 'Clean, organized data that anything you build next can use']
+    },
+    {
+      name: 'IT Support Services', tag: 'Here when you need help',
+      what: 'Computers, networks and servers that keep working. Our support team helps your people at their desks, looks after the systems behind the scenes, and comes on site when something needs hands-on attention.',
+      deliver: ['Desktop Support — Setting up, fixing and updating your team\'s computers and software.', 'Deskside Support — A technician comes to the person\'s desk to sort out the problem there and then.', 'End-user Support — Friendly help with everyday questions and problems, by phone, chat or email.', 'Infrastructure Support — Looking after the servers, storage and cloud systems your business runs on.', 'Networking Support — Wi-Fi, internet, VPN and firewalls set up properly and kept healthy.', 'Data Center Support — Monitoring and care for servers and equipment so they stay up and running.', 'Field Support — An engineer visits your office or site for installs, repairs and other hands-on work.']
     }
   ];
 
@@ -565,7 +570,7 @@
       });
       segs.forEach(function (s, n) { s.classList.toggle('is-on', n === i); });
       vizzes.forEach(function (v, n) { v.classList.toggle('is-on', n === i); });
-      elStep.textContent = '0' + (i + 1) + ' / 06';
+      elStep.textContent = '0' + (i + 1) + ' / 0' + SERVICES.length;
       elTag.textContent = d.tag;
       elName.textContent = d.name;
       elWhat.textContent = d.what;

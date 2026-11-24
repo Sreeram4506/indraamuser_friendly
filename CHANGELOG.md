@@ -56,3 +56,18 @@ Nothing here is committed or deployed. All edits are in the working tree.
 - **Contact email:** `hello@indraam.com` appears on the privacy and terms pages but not the homepage. I used it in the Organization `contactPoint`; remove it if you would rather not publish it there.
 - **OwnerOS:** the page is only "Coming soon". It is in the sitemap as you asked, but a thin page like this may not rank or index well.
 - **Search Console:** submit the new sitemap and inspect the new URLs once deployed.
+
+## 8. Boston keyword targeting
+- **New page `ai-automation-boston.html`:** the main page for "AI automation agency Boston". It has H2 sections for AI automation company, AI assistant and chatbot development, business process automation, custom web app and web development, SEO / local SEO / Google Ads management, dealership paperwork automation, and the Boston office. It has its own title, description, canonical and Service JSON-LD (`areaServed: Boston`). It is added to the sitemap and the footer of every page.
+- **Titles and descriptions now name Boston:**
+  - Home: "AI Automation Agency in Boston | Web & Marketing" (also the homepage H1).
+  - `ai-assistants.html`: AI assistant and chatbot development.
+  - `websites-and-apps.html`: custom web app development and web development company.
+  - `seo-services.html`: SEO services and local SEO.
+  - `dealeros.html`: dealership paperwork automation.
+  - Descriptions on `services.html` and the digital-marketing page also mention Boston.
+- **Matching H2 sections added:** AI assistant and AI chatbot development in Boston, web development company in Boston, SEO services and local SEO in Boston (with Google Ads management links), business process automation and AI services in Boston, and dealership paperwork automation in Boston.
+- **Homepage "Serving Boston" block:** links to all of the above using the target phrases. The homepage Organization JSON-LD now has `knowsAbout` for the same topics.
+- **Digital-marketing page:** the Massachusetts office card now says Boston and mentions SEO, local SEO and Google Ads management.
+- **Not stuffed or invented:** the Boston office is described only as "strategy, design and client delivery" (from the site's office card). No street address, reviews or "based in" claims were added. The site still describes Indraam as US-based with offices in Boston, Hyderabad and Guntur.
+- **Not done:** `<meta name="keywords">`, since Google ignores it. A Google Business Profile for the Boston office and local citations are off-site work that matters more for "Boston" rankings; they need a real street address.
