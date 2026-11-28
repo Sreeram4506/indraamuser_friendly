@@ -6,6 +6,10 @@
     { "source": "/verify/:id", "destination": "/verify.html" }
   ],
   "redirects": [
+    { "source": "/admin", "destination": "/", "permanent": false },
+    { "source": "/admin.html", "destination": "/", "permanent": false },
+    { "source": "/admin-certificates.html", "destination": "/", "permanent": false },
+    { "source": "/api/admin/:path*", "destination": "/", "permanent": false },
     { "source": "/(.*)", "has": [{ "type": "host", "value": "indraam.com" }], "destination": "https://www.indraam.com/$1", "permanent": true },
     { "source": "/blog(.*)", "destination": "/", "permanent": true }
   ],
