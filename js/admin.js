@@ -99,7 +99,7 @@
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'same-origin',
-        body: JSON.stringify({ password: pw.value }),
+        body: JSON.stringify({ password: pw.value, code: ($('#loginCode') || {}).value || '' }),
       });
       var data = null;
       try { data = await res.json(); } catch (e2) { data = null; }
@@ -111,6 +111,7 @@
         return;
       }
       pw.value = '';
+      if ($('#loginCode')) $('#loginCode').value = '';
       showApp();
     } catch (e3) {
       err.textContent = 'Network error — is the dev server running?';
@@ -165,6 +166,7 @@
       + '<div class="rec__meta">'
         + (d.meta && d.meta.country ? '<span>' + esc(d.meta.country) + '</span>' : '')
         + '<span>' + (d.delivered ? 'webhook delivered' : 'stored only') + '</span>'
+        + (d.flag ? '<span>set aside: ' + esc(d.flag) + '</span>' : '')
         + (d.meta && d.meta.referrer ? '<span>from ' + esc(d.meta.referrer) + '</span>' : '')
       + '</div>'
       + '</article>';
@@ -333,6 +335,9 @@
     try {
       var res = await fetch('/api/admin/login', { credentials: 'same-origin' });
       var data = await res.json();
+      // Ask for a login code only when the server requires one.
+      $('#loginCodeField').classList.toggle('u-hidden', !(data && data.totp));
+      $('#weakNote').classList.toggle('u-hidden', !(data && data.weakPassword));
       if (data && data.authed) showApp();
       else showLogin();
     } catch (err) {

@@ -66,6 +66,33 @@ unauthenticated endpoints; a hard cap is the backstop the rate limiter can't be.
 Set `ALLOWED_ORIGINS` to your real domains before going live. Unset, the endpoints answer
 anyone — including someone pointing their own site at your API and spending your credit.
 
+### Abuse protection
+
+| Risk | What stops it |
+|---|---|
+| Guessing the admin password | 5 failed tries per IP per 15 min then lockout, optional authenticator code (`ADMIN_TOTP_SECRET`), generic errors, `/admin` not listed in `robots.txt` |
+| Running up the AI bill | Per-IP limits per minute, hour and day on each route (chat 8/40/100, gap finder 3/10/20); a site-wide `AI_DAILY_LIMIT` (3000) that holds across IPs; capped message sizes and reply length; 32 KB body cap |
+| Making the chat bot misbehave | Rules in the prompt that conversation text cannot override; the browser's history is untrusted (roles, length and total size are enforced, the visitor's question always last); replies are length-capped and shown as plain text; a reply that echoes the instructions is replaced |
+| Contact-form spam | Hidden honeypot field, per-IP limits (2/min, 5/hour, 15/day), strict name and email checks (no control characters or header injection), repeat messages dropped, site-wide hourly ceiling. A message with more than 2 links is not delivered but is **kept as Archived and flagged** in `/admin`, so a real lead who pasted a few URLs isn't lost |
+
+Counters are kept in MongoDB when `MONGODB_URI` is set (shared across serverless instances)
+and in memory otherwise. General limits use fixed windows (a burst straddling a boundary can get
+up to double through). Only the platform's own address header is trusted (Vercel/Netlify); set
+`TRUST_PROXY=1` behind your own proxy. A numeric setting with a typo (`ADMIN_LOGIN_MAX=abc`)
+falls back to its default instead of switching the protection off. Run `npm test` for the tests.
+
+Known trade-offs: the daily caps protect your bill but a determined attacker using many IPs can
+use them up and send real visitors to the offline copy until the next day (the log warns when it
+happens). With no global login lockout, a botnet gets 5 guesses per address, which is why
+`ADMIN_TOTP_SECRET` matters. The chat prompt rules reduce, but cannot eliminate, prompt injection.
+
+**Things only you can do** (no code can):
+
+- Set a **monthly spend limit** with your AI provider.
+- Turn on **two-factor authentication** for Vercel, GitHub, your domain registrar, MongoDB Atlas
+  and your AI provider. Taking over one of those beats any code fix.
+- Set `ALLOWED_ORIGINS`, and keep `MONGODB_URI` and every secret out of chats and the repo.
+
 ### Contract
 
 | Route | Request | Response |
@@ -120,8 +147,20 @@ The password is exchanged for a cookie that's `HttpOnly` (JavaScript can't read 
 XSS bug can't steal the session), `SameSite=Strict` (not sent cross-site, which blunts
 CSRF), `Secure` in production, and signed with `SESSION_SECRET` — the cookie holds only an
 expiry and an HMAC over it, so it can't be forged or extended. Sessions last 7 days.
-Login is limited to 8 attempts per 15 minutes per IP, on its own budget so tuning the
-public `RATE_MAX` can't weaken it.
+After **5 failed attempts**, that IP is refused outright (even with the right password) for a
+full 15 minutes from the failure that tripped the limit. Each attempt is counted *before* the
+password is checked (so a burst of parallel guesses can't all slip through) and a successful
+sign-in gives its count back. The counter is shared across serverless instances through MongoDB,
+IPv6 visitors are counted per /64, and every failure costs the caller a short delay. If the
+database can't be reached, sign-in refuses with a 503 rather than counting in memory.
+
+**Turn on login codes.** Run `npm run totp`, scan the QR code with an authenticator app, and
+set the printed secret as `ADMIN_TOTP_SECRET` (in `.env.local` and in Vercel). Signing in then
+needs the password *and* a current 6-digit code; each code works once, and a wrong guess at
+either part gives the same message. With this on, a stolen or guessed password alone is not
+enough. If `ADMIN_TOTP_SECRET` is set but invalid, the admin stays closed instead of silently
+falling back to password-only. Use a long random `ADMIN_PASSWORD` too (`npm run secret`); the
+dashboard warns you if it is shorter than 14 characters.
 
 **Changing `SESSION_SECRET` signs every session out immediately.** That's your panic button
 if a laptop goes missing.

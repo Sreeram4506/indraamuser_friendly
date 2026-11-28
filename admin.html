@@ -24,6 +24,10 @@
       <span class="contact__label">Password</span>
       <input class="input" id="loginPassword" type="password" autocomplete="current-password" required>
     </label>
+    <label class="login__field u-hidden" id="loginCodeField">
+      <span class="contact__label">Login code</span>
+      <input class="input" id="loginCode" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]*" placeholder="6-digit code from your authenticator app">
+    </label>
     <p class="login__err u-hidden" id="loginErr" role="alert"></p>
     <button class="btn btn-primary login__submit" type="submit" id="loginSubmit">Sign in</button>
   </form>
@@ -90,6 +94,7 @@
       <a class="btn btn-secondary" id="exportBtn" href="#" download>Export CSV</a>
     </div>
 
+    <p class="notice u-hidden" id="weakNote" role="status">Your admin password is short. Replace it with a long random one: run <code>npm run secret</code>, set it as <code>ADMIN_PASSWORD</code> in Vercel, and redeploy.</p>
     <p class="notice u-hidden" id="notice" role="status"></p>
 
     <div class="records" id="records" aria-live="polite"></div>

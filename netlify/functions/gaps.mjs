@@ -1,5 +1,5 @@
 import netlify from '../../api/_lib/netlify.js';
 import core from '../../api/_lib/core.js';
 
-export default netlify.toNetlify(core.runGaps);
+export default netlify.toNetlify(core.runGaps, 'gaps');
 export const config = { path: '/api/gaps' };

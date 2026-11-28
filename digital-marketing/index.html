@@ -836,7 +836,7 @@
 
         <div class="dm-field">
           <label class="dm-label" for="dmName">Full name <span class="dm-req" aria-hidden="true">*</span></label>
-          <input class="input" id="dmName" name="name" type="text" autocomplete="name" required aria-describedby="err-name">
+          <input class="input" id="dmName" name="name" type="text" autocomplete="name" maxlength="120" required aria-describedby="err-name">
           <span class="dm-err" id="err-name"></span>
         </div>
         <div class="dm-field">
@@ -847,7 +847,7 @@
 
         <div class="dm-field">
           <label class="dm-label" for="dmEmail">Business email <span class="dm-req" aria-hidden="true">*</span></label>
-          <input class="input" id="dmEmail" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="err-email">
+          <input class="input" id="dmEmail" name="email" type="email" autocomplete="email" inputmode="email" maxlength="254" required aria-describedby="err-email">
           <span class="dm-err" id="err-email"></span>
         </div>
         <div class="dm-field">
@@ -924,7 +924,7 @@
 
         <div class="dm-field dm-span2">
           <label class="dm-label" for="dmMessage">Your message <small>(optional)</small></label>
-          <textarea class="input" id="dmMessage" name="message" rows="4" placeholder="Tell us about your business and what you're trying to accomplish."></textarea>
+          <textarea class="input" id="dmMessage" name="message" rows="4" maxlength="4000" placeholder="Tell us about your business and what you're trying to accomplish."></textarea>
         </div>
 
         <div class="dm-hp" aria-hidden="true"><label>Leave this field empty<input type="text" name="hp" tabindex="-1" autocomplete="off"></label></div>

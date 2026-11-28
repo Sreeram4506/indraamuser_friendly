@@ -21,6 +21,7 @@ const COLLECTIONS = {
   contacts: 'contacts',  // one doc per form submission
   certificates: 'certificates',          // one doc per issued certificate (public-safe fields + admin notes)
   certificateFiles: 'certificate_files', // the uploaded certificate file, kept apart so list queries stay light
+  rateLimits: 'rate_limits',             // short-lived counters for rate limiting; expire on their own
 };
 
 /* Cache across warm invocations. */
@@ -41,7 +42,13 @@ async function getDb() {
       maxPoolSize: 10,
       serverSelectionTimeoutMS: 8000,
     });
-    cache.promise = client.connect().then((c) => { cache.client = c; return c; });
+    cache.promise = client.connect().then((c) => { cache.client = c; return c; }).catch((err) => {
+      // Forget the failure so the next request tries again, instead of every
+      // request on this instance failing until it is recycled.
+      cache.promise = null;
+      cache.client = null;
+      throw err;
+    });
   }
 
   const client = await cache.promise;
@@ -55,7 +62,10 @@ async function getDb() {
 }
 
 async function ensureIndexes(db) {
-  await Promise.all([
+  // allSettled, not all: one index that can't be built (say a unique index over
+  // existing duplicates) must not stop the others, least of all the TTL index
+  // that lets rate-limit counters expire.
+  const results = await Promise.allSettled([
     db.collection(COLLECTIONS.chats).createIndex({ sessionId: 1 }, { unique: true }),
     db.collection(COLLECTIONS.chats).createIndex({ updatedAt: -1 }),
     db.collection(COLLECTIONS.gaps).createIndex({ createdAt: -1 }),
@@ -64,7 +74,11 @@ async function ensureIndexes(db) {
     db.collection(COLLECTIONS.certificates).createIndex({ certId: 1 }, { unique: true }),
     db.collection(COLLECTIONS.certificates).createIndex({ createdAt: -1 }),
     db.collection(COLLECTIONS.certificateFiles).createIndex({ certId: 1 }, { unique: true }),
+    db.collection(COLLECTIONS.rateLimits).createIndex({ expireAt: 1 }, { expireAfterSeconds: 0 }),
   ]);
+  results.forEach((r) => {
+    if (r.status === 'rejected') console.warn('[indraam db] an index could not be created:', r.reason && r.reason.message);
+  });
 }
 
 /** Run a write, absorbing every failure. Never await this on a hot path. */
@@ -143,7 +157,7 @@ function logGapRun({ sessionId, description, gaps, ok, error, headers }) {
   );
 }
 
-function logContact({ sessionId, name, email, note, lead, source, delivered, headers }) {
+function logContact({ sessionId, name, email, note, lead, source, delivered, headers, status, flag }) {
   return safeWrite('contact', async (db) =>
     db.collection(COLLECTIONS.contacts).insertOne({
       sessionId: sessionId || null,
@@ -153,7 +167,8 @@ function logContact({ sessionId, name, email, note, lead, source, delivered, hea
       lead: lead || null,
       source: source || 'indraam.com',
       delivered: Boolean(delivered),
-      status: 'new', // new | read | replied | archived
+      status: status || 'new', // new | read | replied | archived
+      flag: flag || null,      // why a submission was set aside, e.g. 'many-links'
       createdAt: new Date(),
       meta: meta(headers),
     })

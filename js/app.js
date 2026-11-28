@@ -819,11 +819,17 @@
 
       if (CONFIG.contactEndpoint) {
         try {
-          await fetch(CONFIG.contactEndpoint, {
+          var hp = $('#cHp');
+          var res = await fetch(CONFIG.contactEndpoint, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name: name, email: email, note: note, sessionId: SESSION_ID })
+            body: JSON.stringify({ name: name, email: email, note: note, hp: hp ? hp.value : '', sessionId: SESSION_ID })
           });
+          if (res.status === 429) {
+            showErr('You’ve sent a few already — please try again later, or email hello@indraam.com.');
+            return;
+          }
+          if (!res.ok) throw new Error('http ' + res.status);
         } catch (err) {
           showErr('That didn’t send — email us at hello@indraam.com and we’ll pick it up.');
           return;

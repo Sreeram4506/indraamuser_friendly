@@ -12,6 +12,7 @@
    ========================================================================== */
 
 const crypto = require('crypto');
+const totp = require('./totp');
 
 const COOKIE = 'indraam_admin';
 const TTL_MS = Number(process.env.ADMIN_SESSION_HOURS || 168) * 3600 * 1000; // 7 days
@@ -39,7 +40,21 @@ function safeEqual(a, b) {
 }
 
 function configured() {
+  // If a login-code secret was supplied but is unusable, stay closed rather
+  // than quietly falling back to password-only.
+  if (totp.requested() && !totp.enabled()) return false;
   return Boolean(process.env.ADMIN_PASSWORD && secret());
+}
+
+const MIN_PASSWORD_LENGTH = 14;
+
+/** True when the configured password is short enough to be worth changing. */
+function passwordIsWeak() {
+  return String(process.env.ADMIN_PASSWORD || '').length < MIN_PASSWORD_LENGTH;
+}
+
+if (process.env.ADMIN_PASSWORD && passwordIsWeak()) {
+  console.warn(`[indraam auth] ADMIN_PASSWORD is shorter than ${MIN_PASSWORD_LENGTH} characters. Use a long random one: npm run secret`);
 }
 
 function checkPassword(candidate) {
@@ -111,7 +126,7 @@ function isAuthed(req) {
 function requireAuth(req, res) {
   if (req.method === 'OPTIONS') { res.status(204).end(); return true; }
   if (!configured()) {
-    res.status(503).json({ error: 'Admin is not configured. Set ADMIN_PASSWORD and SESSION_SECRET.' });
+    res.status(503).json({ error: 'Admin is not configured. Set ADMIN_PASSWORD and SESSION_SECRET (and a valid ADMIN_TOTP_SECRET if you use login codes).' });
     return true;
   }
   if (!isAuthed(req)) {
@@ -121,4 +136,4 @@ function requireAuth(req, res) {
   return false;
 }
 
-module.exports = { COOKIE, TTL_MS, configured, checkPassword, issue, verify, isAuthed, requireAuth, setCookie, clearCookie, parseCookies };
+module.exports = { COOKIE, TTL_MS, configured, passwordIsWeak, checkPassword, issue, verify, isAuthed, requireAuth, setCookie, clearCookie, parseCookies };

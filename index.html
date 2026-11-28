@@ -228,7 +228,7 @@
 
       <form class="chatcard__form" id="chatForm">
         <span class="chatcard__ghost" id="chatGhost" aria-hidden="true"></span>
-        <input class="chatcard__input" id="chatInput" type="text" autocomplete="off" placeholder="" aria-label="Ask the Indraam agent">
+        <input class="chatcard__input" id="chatInput" type="text" autocomplete="off" maxlength="600" placeholder="" aria-label="Ask the Indraam agent">
         <button type="submit" class="chatcard__send" aria-label="Send">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-300)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 3 3 9-3 9 19-9Z"></path><path d="M6 12h16"></path></svg>
         </button>
@@ -943,16 +943,17 @@
       <form class="contact__form" id="contactForm" novalidate>
         <label>
           <span class="contact__label">Name</span>
-          <input class="input" id="cName" type="text" name="name" autocomplete="name">
+          <input class="input" id="cName" type="text" name="name" autocomplete="name" maxlength="120">
         </label>
         <label>
           <span class="contact__label">Work email</span>
-          <input class="input" id="cEmail" type="email" name="email" autocomplete="email">
+          <input class="input" id="cEmail" type="email" name="email" autocomplete="email" maxlength="254">
         </label>
         <label>
           <span class="contact__label">What should the system do?</span>
-          <textarea class="input" id="cNote" name="note" rows="4"></textarea>
+          <textarea class="input" id="cNote" name="note" rows="4" maxlength="4000"></textarea>
         </label>
+        <div class="dm-hp" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>Leave this field empty<input type="text" id="cHp" name="hp" tabindex="-1" autocomplete="off"></label></div>
         <p class="contact__err u-hidden" id="cErr" role="alert"></p>
         <div class="contact__actions">
           <button type="submit" class="btn btn-primary" style="white-space:nowrap;min-height:44px">Book a call</button>

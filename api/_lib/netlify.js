@@ -7,7 +7,7 @@
    on Vercel the files in /api are used directly and this is dead weight.
    ========================================================================== */
 
-const { hit } = require('./guard');
+const { overBudget, ipKey } = require('./guard');
 
 function allowedOrigins() {
   const raw = process.env.ALLOWED_ORIGINS;
@@ -32,8 +32,11 @@ function json(payload, status, headers) {
   return new Response(JSON.stringify(payload), { status, headers });
 }
 
-/** @param {(body:object)=>Promise<{status:number,payload:object}>} run */
-function toNetlify(run) {
+/**
+ * @param {(body:object)=>Promise<{status:number,payload:object}>} run
+ * @param {string} name  Rate-limit budget to apply: 'agent' | 'gaps' | 'contact'.
+ */
+function toNetlify(run, name) {
   return async function handler(req) {
     const origin = req.headers.get('origin');
     const headers = cors(origin);
@@ -46,10 +49,11 @@ function toNetlify(run) {
       return json({ error: 'Forbidden' }, 403, headers);
     }
 
-    const ip = (req.headers.get('x-nf-client-connection-ip')
-      || (req.headers.get('x-forwarded-for') || '').split(',')[0].trim()
-      || 'unknown');
-    if (hit(ip)) return json({ error: 'Too many requests — give it a minute.' }, 429, headers);
+    const ip = ipKey(req.headers.get('x-nf-client-connection-ip'));
+    const retryAfter = await overBudget(ip, name);
+    if (retryAfter) {
+      return json({ error: 'Too many requests — try again later.' }, 429, Object.assign({ 'Retry-After': String(retryAfter) }, headers));
+    }
 
     let body = {};
     try { body = await req.json(); } catch { body = {}; }
