@@ -50,7 +50,7 @@ function readFields(body, { requireCore }) {
   }
   if (body.program !== undefined || requireCore) {
     fields.program = certs.cleanText(body.program, 160);
-    if (!fields.program) return { error: 'Program or role is required.' };
+    if (!fields.program) return { error: 'Designation is required.' };
   }
   for (const key of ['startDate', 'endDate', 'issuedOn']) {
     if (body[key] !== undefined) {

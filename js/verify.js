@@ -48,7 +48,7 @@
 
     var details = '<dl class="vdl">' +
       row('Awarded to', data.name, 'vname') +
-      row('Program', data.program) +
+      row('Designation', data.program) +
       row('Duration', duration) +
       row('Issued on', fmtDate(data.issuedOn)) +
       row('Certificate ID', data.certId, 'vmono') +
@@ -72,8 +72,8 @@
       cert = '<div class="vcert"><p class="vcert__note">The certificate record is confirmed. A copy of the certificate is not available online.</p></div>';
     }
 
-    out.innerHTML = card('valid', '&#10003;', 'Certificate verified',
-      'This certificate was issued by Indraam.', details + cert);
+    out.innerHTML = card('valid', '&#10003;', 'Verification completed successfully',
+      'This certificate is genuine and was issued by Indraam.', details + cert);
   }
 
   function renderMissing() {
